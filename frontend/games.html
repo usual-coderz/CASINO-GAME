@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#07120c">
 
   <title>Khelza — Games</title>
 
@@ -21,489 +21,486 @@
   >
 
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/games.css">
 </head>
 
-<body>
+<body class="home-page">
 
-  <header class="site-header">
-    <div class="container header-inner">
+  <header class="topbar">
 
-      <a href="/" class="logo">
-        <span class="logo-mark">K</span>
-        <span class="logo-name">Khelza</span>
+    <div class="topbar-inner">
+
+      <a href="/" class="brand">
+        <span class="brand-mark">K</span>
+
+        <span class="brand-text">
+          <strong>KHELZA</strong>
+          <small>GAMES</small>
+        </span>
       </a>
 
-      <nav class="desktop-nav">
-        <a href="/">Home</a>
-        <a href="/games.html" class="active">Games</a>
-        <a href="/scheme.html">Offers</a>
-        <a href="/#support">Support</a>
-      </nav>
+      <div class="top-actions">
 
-      <div class="header-actions">
-        <a href="/login.html" class="login-link">Login</a>
-        <a href="/signup.html" class="signup-btn">Create account</a>
+        <button
+          class="icon-btn notification-btn"
+          type="button"
+          id="notification-btn"
+          aria-label="Notifications"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span class="notification-dot"></span>
+        </button>
+
+        <a
+          href="/profile.html"
+          class="profile-btn"
+          aria-label="Profile"
+        >
+          <i class="fa-regular fa-user"></i>
+        </a>
+
       </div>
 
-      <button class="mobile-menu-btn" type="button" aria-label="Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
     </div>
+
   </header>
 
 
-  <main>
+  <main class="app-shell">
 
-    <section class="games-hero">
-      <div class="container">
+    <section class="notice-strip">
 
-        <div class="games-breadcrumb">
-          <a href="/">Home</a>
-          <i class="fa-solid fa-chevron-right"></i>
-          <span>Games</span>
+      <div class="notice-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div class="notice-content">
+        <strong>Welcome to Khelza</strong>
+        <span>
+          Play responsibly and keep your account information secure.
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="notice-action"
+        id="notice-detail"
+      >
+        Detail
+      </button>
+
+    </section>
+
+
+    <section class="hero-banner">
+
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+
+      <div class="hero-content">
+
+        <span class="hero-small">WELCOME TO</span>
+
+        <h1>
+          KHELZA
+          <span>GAMES</span>
+        </h1>
+
+        <p>
+          Discover a new collection of games.
+        </p>
+
+        <a href="/games.html" class="hero-btn">
+          Explore games
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+      </div>
+
+      <div class="hero-art">
+
+        <div class="coin coin-one">
+          <i class="fa-solid fa-star"></i>
         </div>
 
-        <div class="games-hero-content">
+        <div class="coin coin-two">
+          <i class="fa-solid fa-dice"></i>
+        </div>
 
-          <div>
-            <span class="games-label">
-              <i class="fa-solid fa-gamepad"></i>
-              GAME LOBBY
-            </span>
-
-            <h1>
-              Choose your
-              <span>game.</span>
-            </h1>
-
-            <p>
-              Explore the Khelza game lobby and discover
-              what's available now and what's coming next.
-            </p>
-          </div>
-
-          <div class="games-counter">
-            <strong>01</strong>
-            <span>Available now</span>
-          </div>
-
+        <div class="game-orb">
+          <i class="fa-solid fa-gamepad"></i>
         </div>
 
       </div>
+
+    </section>
+
+
+    <section class="quick-actions">
+
+      <a
+        href="/games.html"
+        class="quick-card quick-card-primary"
+      >
+        <span class="quick-icon">
+          <i class="fa-solid fa-bolt"></i>
+        </span>
+
+        <span>
+          <strong>Quick Play</strong>
+          <small>Browse games</small>
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+      <a
+        href="/scheme.html"
+        class="quick-card"
+      >
+        <span class="quick-icon">
+          <i class="fa-solid fa-gift"></i>
+        </span>
+
+        <span>
+          <strong>Offers</strong>
+          <small>View promotions</small>
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+
+    </section>
+
+
+    <section class="promo-row">
+
+      <a
+        href="/scheme.html"
+        class="mini-promo mini-promo-one"
+      >
+        <div>
+          <span>FEATURED</span>
+          <strong>New games</strong>
+        </div>
+
+        <i class="fa-solid fa-gamepad"></i>
+      </a>
+
+      <a
+        href="/scheme.html"
+        class="mini-promo mini-promo-two"
+      >
+        <div>
+          <span>EXPLORE</span>
+          <strong>Latest offers</strong>
+        </div>
+
+        <i class="fa-solid fa-gift"></i>
+      </a>
+
+    </section>
+
+
+    <section class="category-section">
+
+      <div class="section-tabs">
+
+        <button
+          class="category-tab active"
+          data-category="all"
+        >
+          <i class="fa-solid fa-border-all"></i>
+          <span>Lobby</span>
+        </button>
+
+        <button
+          class="category-tab"
+          data-category="lottery"
+        >
+          <i class="fa-solid fa-ticket"></i>
+          <span>Lottery</span>
+        </button>
+
+        <button
+          class="category-tab"
+          data-category="popular"
+        >
+          <i class="fa-solid fa-fire"></i>
+          <span>Popular</span>
+        </button>
+
+        <button
+          class="category-tab"
+          data-category="mini"
+        >
+          <i class="fa-solid fa-puzzle-piece"></i>
+          <span>Mini Games</span>
+        </button>
+
+      </div>
+
     </section>
 
 
     <section class="games-section">
-      <div class="container">
 
-        <div class="games-toolbar">
+      <div class="section-heading">
 
-          <div class="game-tabs">
-            <button class="game-tab active" data-filter="all">
-              All
-            </button>
-
-            <button class="game-tab" data-filter="available">
-              Available
-            </button>
-
-            <button class="game-tab" data-filter="soon">
-              Coming soon
-            </button>
-          </div>
-
-          <div class="games-count">
-            <span id="games-count">5</span> games
-          </div>
-
+        <div>
+          <span>GAME COLLECTION</span>
+          <h2>Featured games</h2>
         </div>
 
-
-        <div class="games-lobby" id="games-lobby">
-
-
-          <article
-            class="lobby-card available"
-            data-status="available"
-          >
-
-            <div class="lobby-visual dice-visual">
-
-              <div class="visual-top">
-                <span class="available-badge">
-                  <i></i>
-                  AVAILABLE
-                </span>
-
-                <span class="visual-number">
-                  01
-                </span>
-              </div>
-
-              <div class="dice-box">
-                <span>5</span>
-              </div>
-
-              <div class="visual-bottom">
-                <small>KHELZA</small>
-                <strong>DICE</strong>
-              </div>
-
-            </div>
-
-            <div class="lobby-body">
-
-              <div class="lobby-title">
-                <div>
-                  <span>ARCADE</span>
-                  <h2>Dice</h2>
-                </div>
-
-                <div class="lobby-icon available-icon">
-                  <i class="fa-solid fa-play"></i>
-                </div>
-              </div>
-
-              <p>
-                A simple and quick game experience
-                built for the Khelza lobby.
-              </p>
-
-              <a href="/games/dice.html" class="play-game-btn">
-                Open game
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="lobby-card soon"
-            data-status="soon"
-          >
-
-            <div class="lobby-visual slots-visual">
-
-              <div class="visual-top">
-                <span class="soon-badge">
-                  COMING SOON
-                </span>
-
-                <span class="visual-number">
-                  02
-                </span>
-              </div>
-
-              <div class="slot-symbols">
-                <span>7</span>
-                <span>7</span>
-                <span>7</span>
-              </div>
-
-              <div class="visual-bottom">
-                <small>KHELZA</small>
-                <strong>SLOTS</strong>
-              </div>
-
-            </div>
-
-            <div class="lobby-body">
-
-              <div class="lobby-title">
-                <div>
-                  <span>CASINO</span>
-                  <h2>Slots</h2>
-                </div>
-
-                <div class="lobby-icon">
-                  <i class="fa-solid fa-lock"></i>
-                </div>
-              </div>
-
-              <p>
-                A new slot experience is currently
-                being prepared for the lobby.
-              </p>
-
-              <button
-                class="notify-game-btn"
-                data-game="Slots"
-              >
-                Coming soon
-                <i class="fa-solid fa-clock"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="lobby-card soon"
-            data-status="soon"
-          >
-
-            <div class="lobby-visual blackjack-visual">
-
-              <div class="visual-top">
-                <span class="soon-badge">
-                  COMING SOON
-                </span>
-
-                <span class="visual-number">
-                  03
-                </span>
-              </div>
-
-              <div class="cards-symbol">
-                <i class="fa-solid fa-clover"></i>
-              </div>
-
-              <div class="visual-bottom">
-                <small>KHELZA</small>
-                <strong>BLACKJACK</strong>
-              </div>
-
-            </div>
-
-            <div class="lobby-body">
-
-              <div class="lobby-title">
-                <div>
-                  <span>TABLE</span>
-                  <h2>Blackjack</h2>
-                </div>
-
-                <div class="lobby-icon">
-                  <i class="fa-solid fa-lock"></i>
-                </div>
-              </div>
-
-              <p>
-                A table-game experience planned
-                for a future Khelza release.
-              </p>
-
-              <button
-                class="notify-game-btn"
-                data-game="Blackjack"
-              >
-                Coming soon
-                <i class="fa-solid fa-clock"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="lobby-card soon"
-            data-status="soon"
-          >
-
-            <div class="lobby-visual crash-visual">
-
-              <div class="visual-top">
-                <span class="soon-badge">
-                  COMING SOON
-                </span>
-
-                <span class="visual-number">
-                  04
-                </span>
-              </div>
-
-              <div class="chart-symbol">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-
-              <div class="visual-bottom">
-                <small>KHELZA</small>
-                <strong>ARCADE</strong>
-              </div>
-
-            </div>
-
-            <div class="lobby-body">
-
-              <div class="lobby-title">
-                <div>
-                  <span>ARCADE</span>
-                  <h2>More games</h2>
-                </div>
-
-                <div class="lobby-icon">
-                  <i class="fa-solid fa-lock"></i>
-                </div>
-              </div>
-
-              <p>
-                More game experiences will be added
-                to the Khelza lobby over time.
-              </p>
-
-              <button
-                class="notify-game-btn"
-                data-game="More games"
-              >
-                Coming soon
-                <i class="fa-solid fa-clock"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article
-            class="lobby-card soon"
-            data-status="soon"
-          >
-
-            <div class="lobby-visual future-visual">
-
-              <div class="visual-top">
-                <span class="soon-badge">
-                  COMING SOON
-                </span>
-
-                <span class="visual-number">
-                  05
-                </span>
-              </div>
-
-              <div class="future-symbol">
-                <i class="fa-solid fa-plus"></i>
-              </div>
-
-              <div class="visual-bottom">
-                <small>KHELZA</small>
-                <strong>NEW GAME</strong>
-              </div>
-
-            </div>
-
-            <div class="lobby-body">
-
-              <div class="lobby-title">
-                <div>
-                  <span>NEW</span>
-                  <h2>Something new</h2>
-                </div>
-
-                <div class="lobby-icon">
-                  <i class="fa-solid fa-lock"></i>
-                </div>
-              </div>
-
-              <p>
-                A new experience is being planned
-                for the Khelza game lobby.
-              </p>
-
-              <button
-                class="notify-game-btn"
-                data-game="Something new"
-              >
-                Coming soon
-                <i class="fa-solid fa-clock"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-        </div>
-
-
-        <div class="empty-games" id="empty-games">
-          <div>
-            <i class="fa-solid fa-gamepad"></i>
-          </div>
-
-          <h3>No games found</h3>
-
-          <p>
-            There are no games in this category right now.
-          </p>
-        </div>
+        <a href="/games.html">
+          View all
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
 
       </div>
+
+
+      <div class="game-grid">
+
+        <article
+          class="game-card"
+          data-category="lottery"
+        >
+
+          <div class="game-image game-blue">
+
+            <span class="game-ball ball-seven">7</span>
+            <span class="game-ball ball-one">1</span>
+            <span class="game-ball ball-five">5</span>
+
+            <div class="game-symbol">
+              <i class="fa-solid fa-crown"></i>
+              <strong>7</strong>
+            </div>
+
+            <span class="game-label">KHELZA</span>
+
+          </div>
+
+          <div class="game-info">
+
+            <div>
+              <strong>Win Go</strong>
+              <small>Lottery</small>
+            </div>
+
+            <a
+              href="/games.html"
+              class="play-btn"
+            >
+              Play
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="game-card"
+          data-category="popular"
+        >
+
+          <div class="game-image game-red">
+
+            <div class="dice-shape dice-one">
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="dice-shape dice-two">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <i class="fa-solid fa-coins game-coins"></i>
+
+          </div>
+
+          <div class="game-info">
+
+            <div>
+              <strong>Dice</strong>
+              <small>Popular</small>
+            </div>
+
+            <a
+              href="/games/dice.html"
+              class="play-btn"
+            >
+              Play
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="game-card"
+          data-category="lottery"
+        >
+
+          <div class="game-image game-green">
+
+            <div class="number-orb">
+              <strong>5D</strong>
+            </div>
+
+            <span class="small-ball">5</span>
+            <span class="small-ball small-ball-two">9</span>
+
+            <i class="fa-solid fa-circle-dollar-to-slot slot-icon"></i>
+
+          </div>
+
+          <div class="game-info">
+
+            <div>
+              <strong>5D Lottery</strong>
+              <small>Lottery</small>
+            </div>
+
+            <button
+              class="play-btn coming-btn"
+              type="button"
+            >
+              Soon
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="game-card"
+          data-category="mini"
+        >
+
+          <div class="game-image game-purple">
+
+            <i class="fa-solid fa-puzzle-piece"></i>
+
+            <span class="floating-star star-one">✦</span>
+            <span class="floating-star star-two">✦</span>
+
+          </div>
+
+          <div class="game-info">
+
+            <div>
+              <strong>Mini Games</strong>
+              <small>Coming soon</small>
+            </div>
+
+            <button
+              class="play-btn coming-btn"
+              type="button"
+            >
+              Soon
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
     </section>
 
 
-    <section class="games-note">
-      <div class="container">
+    <section class="safe-note">
 
-        <div class="games-note-box">
+      <i class="fa-solid fa-circle-info"></i>
 
-          <div class="games-note-icon">
-            <i class="fa-solid fa-circle-info"></i>
-          </div>
-
-          <div>
-            <strong>More games are on the way</strong>
-            <p>
-              The lobby will be updated as new game experiences
-              become available.
-            </p>
-          </div>
-
-        </div>
-
+      <div>
+        <strong>Khelza Games</strong>
+        <span>
+          New games and features will be added regularly.
+        </span>
       </div>
+
     </section>
 
   </main>
 
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
+  <nav class="bottom-nav">
 
-      <a href="/" class="logo">
-        <span class="logo-mark">K</span>
-        <span class="logo-name">Khelza</span>
-      </a>
+    <a
+      href="#"
+      class="bottom-item"
+      id="affiliate-nav"
+    >
+      <i class="fa-solid fa-users"></i>
+      <span>Affiliate</span>
+    </a>
 
-      <p>© 2026 Khelza. All rights reserved.</p>
+    <a
+      href="/wallet.html"
+      class="bottom-item"
+    >
+      <i class="fa-solid fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
 
-      <div class="footer-links">
-        <a href="/scheme.html">Offers</a>
-        <a href="/#support">Support</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-      </div>
+    <a
+      href="/games.html"
+      class="bottom-item active"
+    >
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Games</span>
+    </a>
 
+    <a
+      href="/activity.html"
+      class="bottom-item"
+      id="activity-nav"
+    >
+      <i class="fa-solid fa-chart-column"></i>
+      <span>Activity</span>
+    </a>
+
+    <a
+      href="/profile.html"
+      class="bottom-item"
+    >
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </a>
+
+  </nav>
+
+
+  <div class="toast" id="home-toast">
+
+    <div class="toast-icon">
+      <i class="fa-solid fa-circle-info"></i>
     </div>
-  </footer>
-
-
-  <div class="games-toast" id="games-toast">
-
-    <span class="games-toast-icon">
-      <i class="fa-solid fa-clock"></i>
-    </span>
 
     <div>
-      <strong id="games-toast-title">Coming soon</strong>
-      <p id="games-toast-message">
-        This game is not available yet.
-      </p>
+      <strong id="toast-title">Khelza</strong>
+      <span id="toast-message">Coming soon.</span>
     </div>
 
-    <button type="button" id="games-toast-close">
+    <button
+      type="button"
+      id="toast-close"
+      aria-label="Close"
+    >
       <i class="fa-solid fa-xmark"></i>
     </button>
 
   </div>
 
 
-  <script src="/js/games.js"></script>
+  <script src="/js/home.js"></script>
 
 </body>
 </html>
