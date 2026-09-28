@@ -1,581 +1,487 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#090909">
-  <meta name="mobile-web-app-capable" content="yes">
-  <title>Royal Vegas Casino</title>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Khelza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
   <link rel="stylesheet" href="/css/style.css">
-</head><body><div class="page-glow glow-one"></div>
-<div class="page-glow glow-two"></div><header class="header">
-  <div class="header-inner"><a href="/" class="logo">
-  <span class="logo-icon">
-    <i class="fas fa-crown"></i>
-  </span>
-  <span class="logo-text">
-    <strong>ROYAL</strong>
-    <small>VEGAS</small>
-  </span>
-</a>
+</head>
 
-<nav class="nav">
-  <a href="/" class="active">
-    <i class="fas fa-house"></i>
-    <span>Home</span>
-  </a>
-  <a href="/games/dice">
-    <i class="fas fa-dice"></i>
-    <span>Dice</span>
-  </a>
-  <a href="#promotions">
-    <i class="fas fa-gift"></i>
-    <span>Promotions</span>
-  </a>
-  <a href="#support">
-    <i class="fas fa-headset"></i>
-    <span>Support</span>
-  </a>
-</nav>
+<body>
 
-<div class="header-actions">
+  <header class="site-header">
+    <div class="container header-inner">
 
-  <div id="guest-view" class="guest-actions">
-    <button class="btn btn-outline" onclick="authModal.open('login')">
-      Login
-    </button>
-    <button class="btn btn-primary" onclick="authModal.open('signup')">
-      Sign Up
-    </button>
-  </div>
+      <a href="/" class="logo">
+        <span class="logo-mark">K</span>
+        <span class="logo-name">Khelza</span>
+      </a>
 
-  <div id="user-view" class="user-actions hidden">
+      <nav class="desktop-nav">
+        <a href="/" class="active">Home</a>
+        <a href="/games.html">Games</a>
+        <a href="/scheme.html">Offers</a>
+        <a href="#support">Support</a>
+      </nav>
 
-    <button class="wallet-display" onclick="walletModal.open()">
-      <span class="wallet-icon">
-        <i class="fas fa-wallet"></i>
-      </span>
-      <span class="wallet-info">
-        <small>Balance</small>
-        <strong>₹<span id="wallet-balance">0.00</span></strong>
-      </span>
-    </button>
+      <div class="header-actions">
+        <a href="/login.html" class="login-link">Login</a>
+        <a href="/signup.html" class="signup-btn">Create account</a>
+      </div>
 
-    <div class="profile-dropdown">
-
-      <button class="profile-trigger" onclick="toggleProfile()">
-        <span class="avatar">
-          <i class="fas fa-user"></i>
-        </span>
-        <span id="username-display">Player</span>
-        <i class="fas fa-chevron-down profile-arrow"></i>
+      <button class="mobile-menu-btn" type="button" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
       </button>
 
-      <div class="profile-menu" id="profile-menu">
+    </div>
+  </header>
 
-        <div class="profile-info">
-          <div class="profile-avatar-large">
-            <i class="fas fa-user"></i>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div class="hero-content">
+
+          <div class="hero-label">
+            <span></span>
+            WELCOME TO KHELZA
           </div>
+
+          <h1>
+            Your place to
+            <strong>play.</strong>
+          </h1>
+
+          <p>
+            Discover a clean, fast and modern gaming experience
+            designed around you.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="/games.html" class="primary-btn">
+              Explore games
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <a href="/scheme.html" class="secondary-btn">
+              View offers
+            </a>
+          </div>
+
+          <div class="hero-points">
+            <span>
+              <i class="fa-solid fa-bolt"></i>
+              Fast experience
+            </span>
+
+            <span>
+              <i class="fa-solid fa-shield-halved"></i>
+              Secure account
+            </span>
+
+            <span>
+              <i class="fa-solid fa-headset"></i>
+              Player support
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="hero-card-wrap">
+
+          <div class="hero-card">
+
+            <div class="hero-card-top">
+              <span class="live-status">
+                <i></i>
+                FEATURED
+              </span>
+
+              <span class="hero-card-dots">
+                <i class="fa-solid fa-ellipsis"></i>
+              </span>
+            </div>
+
+            <div class="hero-game-icon">
+              <div class="dice-symbol">5</div>
+            </div>
+
+            <div class="hero-card-info">
+              <span>FEATURED GAME</span>
+              <h2>Dice</h2>
+              <p>Quick rounds. Simple gameplay.</p>
+            </div>
+
+            <a href="/games/dice" class="hero-play-btn">
+              Play now
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </div>
+
+          <div class="mini-card mini-card-one">
+            <span class="mini-icon">
+              <i class="fa-solid fa-gift"></i>
+            </span>
+            <div>
+              <small>New offers</small>
+              <strong>View promotions</strong>
+            </div>
+          </div>
+
+          <div class="mini-card mini-card-two">
+            <span class="mini-icon">
+              <i class="fa-solid fa-gamepad"></i>
+            </span>
+            <div>
+              <small>Game lobby</small>
+              <strong>Explore games</strong>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="notice-section">
+      <div class="container">
+
+        <div class="notice-list">
+
+          <div class="notice-card">
+            <span class="notice-icon">
+              <i class="fa-solid fa-gift"></i>
+            </span>
+
+            <div class="notice-content">
+              <strong>New offers are here</strong>
+              <span>Check the latest Khelza promotions.</span>
+            </div>
+
+            <a href="/scheme.html" class="notice-action">
+              View
+            </a>
+
+            <button
+              type="button"
+              class="notice-close"
+              aria-label="Close notification"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+
+          <div class="notice-card">
+            <span class="notice-icon">
+              <i class="fa-solid fa-gamepad"></i>
+            </span>
+
+            <div class="notice-content">
+              <strong>More games coming soon</strong>
+              <span>New titles are being added to the lobby.</span>
+            </div>
+
+            <a href="/games.html" class="notice-action">
+              Games
+            </a>
+
+            <button
+              type="button"
+              class="notice-close"
+              aria-label="Close notification"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+
+          <div class="notice-card">
+            <span class="notice-icon">
+              <i class="fa-solid fa-bell"></i>
+            </span>
+
+            <div class="notice-content">
+              <strong>Welcome to Khelza</strong>
+              <span>Keep an eye on the latest updates.</span>
+            </div>
+
+            <button
+              type="button"
+              class="notice-close"
+              aria-label="Close notification"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="offers-section" id="offers">
+      <div class="container">
+
+        <div class="section-heading">
           <div>
-            <strong id="player-name">Player</strong>
-            <span>ID: <b id="player-id">-</b></span>
+            <span>FEATURED</span>
+            <h2>Offers & promotions</h2>
+          </div>
+
+          <a href="/scheme.html">
+            See all
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+
+        <div class="offer-grid">
+
+          <a href="/scheme.html" class="offer-card offer-main">
+            <div class="offer-overlay"></div>
+
+            <div class="offer-content">
+              <span class="offer-tag">KHELZA</span>
+              <h3>Special offers</h3>
+              <p>Explore the latest promotions and announcements.</p>
+
+              <span class="offer-link">
+                Explore
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+
+
+          <a href="/scheme.html" class="offer-card offer-secondary">
+            <div class="offer-content">
+              <span class="offer-tag">UPDATES</span>
+              <h3>What's new?</h3>
+              <p>See what's happening around Khelza.</p>
+
+              <span class="offer-link">
+                Discover
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="games-preview" id="games">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <span>GAME LOBBY</span>
+            <h2>Play something</h2>
+          </div>
+
+          <a href="/games.html">
+            All games
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+
+        <div class="game-grid">
+
+          <a href="/games/dice" class="game-card active-game">
+
+            <div class="game-card-top">
+              <span class="game-live">
+                <i></i>
+                AVAILABLE
+              </span>
+
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+
+            <div class="game-art">
+              <div class="dice-large">5</div>
+            </div>
+
+            <div class="game-info">
+              <span>GAME</span>
+              <h3>Dice</h3>
+              <p>Quick and simple rounds.</p>
+            </div>
+
+            <div class="game-card-footer">
+              <span>Play now</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+          </a>
+
+
+          <div class="game-card coming-soon">
+
+            <div class="game-card-top">
+              <span class="coming-label">
+                COMING SOON
+              </span>
+
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="game-art">
+              <i class="fa-solid fa-sliders"></i>
+            </div>
+
+            <div class="game-info">
+              <span>CASINO</span>
+              <h3>Slots</h3>
+              <p>A new game is on the way.</p>
+            </div>
+
+          </div>
+
+
+          <div class="game-card coming-soon">
+
+            <div class="game-card-top">
+              <span class="coming-label">
+                COMING SOON
+              </span>
+
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="game-art">
+              <i class="fa-solid fa-clover"></i>
+            </div>
+
+            <div class="game-info">
+              <span>TABLE</span>
+              <h3>Blackjack</h3>
+              <p>Coming to the lobby soon.</p>
+            </div>
+
+          </div>
+
+
+          <div class="game-card coming-soon">
+
+            <div class="game-card-top">
+              <span class="coming-label">
+                COMING SOON
+              </span>
+
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="game-art">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div class="game-info">
+              <span>ARCADE</span>
+              <h3>More games</h3>
+              <p>Stay tuned for new releases.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="trust-section" id="support">
+      <div class="container trust-grid">
+
+        <div class="trust-item">
+          <span>
+            <i class="fa-solid fa-bolt"></i>
+          </span>
+
+          <div>
+            <strong>Fast experience</strong>
+            <p>Designed to stay quick and responsive.</p>
           </div>
         </div>
 
-        <div class="profile-divider"></div>
 
-        <a href="#" onclick="walletModal.open(); return false;">
-          <i class="fas fa-wallet"></i>
-          <span>My Wallet</span>
-        </a>
+        <div class="trust-item">
+          <span>
+            <i class="fa-solid fa-shield-halved"></i>
+          </span>
 
-        <a href="/games/dice">
-          <i class="fas fa-dice"></i>
-          <span>Play Dice</span>
-        </a>
+          <div>
+            <strong>Secure account</strong>
+            <p>Your account information is protected.</p>
+          </div>
+        </div>
 
-        <a href="#" onclick="logout(); return false;" class="logout">
-          <i class="fas fa-right-from-bracket"></i>
-          <span>Logout</span>
-        </a>
+
+        <div class="trust-item">
+          <span>
+            <i class="fa-solid fa-headset"></i>
+          </span>
+
+          <div>
+            <strong>Support</strong>
+            <p>Get help when you need it.</p>
+          </div>
+        </div>
 
       </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <a href="/" class="logo">
+        <span class="logo-mark">K</span>
+        <span class="logo-name">Khelza</span>
+      </a>
+
+      <p>© 2026 Khelza. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="/scheme.html">Offers</a>
+        <a href="#support">Support</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+
     </div>
-  </div>
+  </footer>
 
-</div>
 
-  </div>
-</header><main><section class="hero">  <div class="hero-overlay"></div>  <div class="hero-content"><div class="hero-badge">
-  <span class="live-dot"></span>
-  PREMIUM GAMING EXPERIENCE
-</div>
+  <script src="/js/home.js"></script>
 
-<h1>
-  Your Game.<br>
-  <span>Your Royal Moment.</span>
-</h1>
-
-<p>
-  Experience premium casino games with a smooth,
-  secure and modern gaming experience.
-</p>
-
-<div class="hero-actions">
-  <button class="btn btn-gold btn-large" onclick="startPlaying()">
-    <i class="fas fa-dice"></i>
-    Play Dice
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-  <a href="#games" class="hero-secondary">
-    Explore Games
-    <i class="fas fa-chevron-down"></i>
-  </a>
-</div>
-
-<div class="hero-stats">
-  <div>
-    <strong>24/7</strong>
-    <span>Gaming</span>
-  </div>
-  <div class="stat-line"></div>
-  <div>
-    <strong>Fast</strong>
-    <span>Experience</span>
-  </div>
-  <div class="stat-line"></div>
-  <div>
-    <strong>Secure</strong>
-    <span>Wallet</span>
-  </div>
-</div>
-
-  </div>  <div class="hero-decoration">
-    <div class="floating-chip chip-one">₹</div>
-    <div class="floating-chip chip-two">♠</div>
-    <div class="floating-chip chip-three">♛</div>
-  </div></section><section class="games-section" id="games">  <div class="section-heading">
-    <div>
-      <span class="section-kicker">GAME LOBBY</span>
-      <h2>Popular Games</h2>
-    </div><span class="game-count">
-  <span class="live-dot"></span>
-  1 Available
-</span>
-
-  </div>  <div class="games-grid"><article class="game-card featured" onclick="startPlaying()">
-
-  <div class="game-card-glow"></div>
-
-  <div class="game-top">
-    <span class="game-status">
-      <span class="live-dot"></span>
-      LIVE
-    </span>
-
-    <span class="game-rating">
-      <i class="fas fa-star"></i>
-      4.9
-    </span>
-  </div>
-
-  <div class="game-visual dice-visual">
-    <div class="dice-shadow"></div>
-    <div class="dice">⚄</div>
-  </div>
-
-  <div class="game-details">
-    <div>
-      <span class="game-category">CASINO</span>
-      <h3>Dice</h3>
-    </div>
-
-    <div class="game-payout">
-      <span>UP TO</span>
-      <strong>49x</strong>
-    </div>
-  </div>
-
-  <p>
-    Roll over or under and test your luck with every round.
-  </p>
-
-  <button class="btn btn-play">
-    Play Now
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-</article>
-
-
-<article class="game-card locked">
-
-  <div class="locked-overlay">
-    <span>
-      <i class="fas fa-lock"></i>
-      Coming Soon
-    </span>
-  </div>
-
-  <div class="game-top">
-    <span class="game-status muted">SOON</span>
-  </div>
-
-  <div class="game-visual">
-    <div class="game-emoji">🎰</div>
-  </div>
-
-  <div class="game-details">
-    <div>
-      <span class="game-category">CASINO</span>
-      <h3>Slots</h3>
-    </div>
-  </div>
-
-  <p>Classic slots with a modern experience.</p>
-
-</article>
-
-
-<article class="game-card locked">
-
-  <div class="locked-overlay">
-    <span>
-      <i class="fas fa-lock"></i>
-      Coming Soon
-    </span>
-  </div>
-
-  <div class="game-top">
-    <span class="game-status muted">SOON</span>
-  </div>
-
-  <div class="game-visual">
-    <div class="game-emoji">🃏</div>
-  </div>
-
-  <div class="game-details">
-    <div>
-      <span class="game-category">TABLE</span>
-      <h3>Blackjack</h3>
-    </div>
-  </div>
-
-  <p>Classic blackjack experience coming soon.</p>
-
-</article>
-
-
-<article class="game-card locked">
-
-  <div class="locked-overlay">
-    <span>
-      <i class="fas fa-lock"></i>
-      Coming Soon
-    </span>
-  </div>
-
-  <div class="game-top">
-    <span class="game-status muted">SOON</span>
-  </div>
-
-  <div class="game-visual">
-    <div class="game-emoji">🚀</div>
-  </div>
-
-  <div class="game-details">
-    <div>
-      <span class="game-category">ARCADE</span>
-      <h3>Crash</h3>
-    </div>
-  </div>
-
-  <p>Watch the multiplier rise in real time.</p>
-
-</article>
-
-  </div>
-</section><section class="trust-section">  <div class="trust-item">
-    <span class="trust-icon">
-      <i class="fas fa-shield-halved"></i>
-    </span>
-    <div>
-      <strong>Secure Wallet</strong>
-      <span>Protected transactions</span>
-    </div>
-  </div>  <div class="trust-item">
-    <span class="trust-icon">
-      <i class="fas fa-bolt"></i>
-    </span>
-    <div>
-      <strong>Fast Experience</strong>
-      <span>Quick and responsive</span>
-    </div>
-  </div>  <div class="trust-item">
-    <span class="trust-icon">
-      <i class="fas fa-headset"></i>
-    </span>
-    <div>
-      <strong>Support</strong>
-      <span>We're here to help</span>
-    </div>
-  </div></section></main><div class="modal" id="auth-modal">  <div class="modal-backdrop"></div>  <div class="modal-content auth-modal-content"><button class="close" onclick="authModal.close()">
-  <i class="fas fa-xmark"></i>
-</button>
-
-<div class="modal-brand">
-  <span class="modal-crown">
-    <i class="fas fa-crown"></i>
-  </span>
-  <span>ROYAL VEGAS</span>
-</div>
-
-<div class="auth-tabs">
-  <button class="tab-btn active" data-tab="login" onclick="authModal.switch('login')">
-    Login
-  </button>
-  <button class="tab-btn" data-tab="signup" onclick="authModal.switch('signup')">
-    Create Account
-  </button>
-</div>
-
-
-<form id="login-form" class="auth-form">
-
-  <div class="form-heading">
-    <h3>Welcome Back</h3>
-    <p>Sign in to continue playing.</p>
-  </div>
-
-  <div class="form-group">
-    <label>Email or Player ID</label>
-    <div class="input-wrap">
-      <i class="fas fa-user"></i>
-      <input type="text" id="login-email" placeholder="Enter email or player ID" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Password</label>
-    <div class="input-wrap">
-      <i class="fas fa-lock"></i>
-      <input type="password" id="login-password" placeholder="Enter password" required>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary btn-block">
-    Login
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-</form>
-
-
-<form id="signup-form" class="auth-form hidden">
-
-  <div class="form-heading">
-    <h3>Create Account</h3>
-    <p>Join Royal Vegas today.</p>
-  </div>
-
-  <div class="form-group">
-    <label>Full Name</label>
-    <div class="input-wrap">
-      <i class="fas fa-user"></i>
-      <input type="text" id="signup-name" placeholder="Your full name" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Email</label>
-    <div class="input-wrap">
-      <i class="fas fa-envelope"></i>
-      <input type="email" id="signup-email" placeholder="you@example.com" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Phone</label>
-    <div class="input-wrap">
-      <i class="fas fa-phone"></i>
-      <input type="tel" id="signup-phone" placeholder="Mobile number" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Password</label>
-    <div class="input-wrap">
-      <i class="fas fa-lock"></i>
-      <input type="password" id="signup-password" placeholder="Create a password" required>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Casino Name</label>
-    <div class="input-wrap">
-      <i class="fas fa-at"></i>
-      <input type="text" id="signup-casino-name" placeholder="e.g. LuckyTiger007" required>
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary btn-block">
-    Create Account
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-</form>
-
-  </div>
-</div><div class="modal" id="wallet-modal">  <div class="modal-backdrop"></div>  <div class="modal-content wallet-modal-content"><button class="close" onclick="walletModal.close()">
-  <i class="fas fa-xmark"></i>
-</button>
-
-<div class="wallet-header">
-  <div>
-    <span class="section-kicker">ACCOUNT</span>
-    <h2><i class="fas fa-wallet"></i> My Wallet</h2>
-  </div>
-  <span class="wallet-secure">
-    <i class="fas fa-shield-halved"></i>
-    Secure
-  </span>
-</div>
-
-
-<div class="wallet-balance-card">
-
-  <div class="balance-top">
-    <span>Total Balance</span>
-    <i class="fas fa-wallet"></i>
-  </div>
-
-  <div class="balance-amount">
-    ₹<span id="modal-wallet-balance">0.00</span>
-  </div>
-
-  <div class="balance-label">
-    Available balance
-  </div>
-
-  <div class="balance-actions">
-    <button class="btn btn-success" onclick="showDeposit()">
-      <i class="fas fa-plus"></i>
-      Deposit
-    </button>
-
-    <button class="btn btn-warning" onclick="showWithdraw()">
-      <i class="fas fa-arrow-up-right-from-square"></i>
-      Withdraw
-    </button>
-  </div>
-
-</div>
-
-
-<div id="deposit-section" class="wallet-section">
-
-  <div class="wallet-section-heading">
-    <div>
-      <span class="section-kicker">ADD FUNDS</span>
-      <h3>Deposit Money</h3>
-    </div>
-  </div>
-
-  <div class="quick-amounts">
-    <button onclick="setAmount(500)">₹500</button>
-    <button onclick="setAmount(1000)">₹1,000</button>
-    <button onclick="setAmount(5000)">₹5,000</button>
-    <button onclick="setAmount(10000)">₹10,000</button>
-  </div>
-
-  <div class="form-group">
-    <label>Amount</label>
-    <div class="input-wrap">
-      <span class="currency-symbol">₹</span>
-      <input type="number" id="deposit-amount" min="100" placeholder="Enter amount">
-    </div>
-  </div>
-
-  <button class="btn btn-success btn-block" onclick="processDeposit()">
-    Proceed to Pay
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-</div>
-
-
-<div id="withdraw-section" class="wallet-section hidden">
-
-  <div class="wallet-section-heading">
-    <div>
-      <span class="section-kicker">PAYOUT</span>
-      <h3>Withdraw Money</h3>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>UPI ID</label>
-    <div class="input-wrap">
-      <i class="fas fa-building-columns"></i>
-      <input type="text" id="withdraw-upi" placeholder="name@upi">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Holder Name</label>
-    <div class="input-wrap">
-      <i class="fas fa-user"></i>
-      <input type="text" id="withdraw-name" placeholder="Account holder name">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Amount</label>
-    <div class="input-wrap">
-      <span class="currency-symbol">₹</span>
-      <input type="number" id="withdraw-amount" min="100" placeholder="Enter amount">
-    </div>
-  </div>
-
-  <button class="btn btn-warning btn-block" onclick="processWithdraw()">
-    Request Withdrawal
-    <i class="fas fa-arrow-right"></i>
-  </button>
-
-</div>
-
-
-<div class="transaction-history">
-
-  <div class="transaction-heading">
-    <h3>Recent Transactions</h3>
-    <span>History</span>
-  </div>
-
-  <div id="transactions-list">
-    <div class="empty-state">
-      <span>
-        <i class="fas fa-receipt"></i>
-      </span>
-      <strong>No transactions yet</strong>
-      <small>Your recent wallet activity will appear here.</small>
-    </div>
-  </div>
-
-</div>
-
-  </div>
-</div><footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="footer-crown"><i class="fas fa-crown"></i></span>
-      <span>ROYAL VEGAS</span>
-    </div>
-    <p>Smooth gaming experience.</p>
-  </div>
-</footer><script src="/js/api.js"></script><script src="/js/auth.js"></script><script src="/js/wallet.js"></script></body>
+</body>
 </html>
