@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050807">
+
+  <title>Withdraw — Khelza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/withdraw.css">
+</head>
+
+<body class="withdraw-page">
+
+  <header class="withdraw-header">
+
+    <div class="withdraw-header-inner">
+
+      <a href="/wallet.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+
+      <div class="withdraw-title">
+        <strong>Withdraw</strong>
+        <span>Wallet</span>
+      </div>
+
+      <button
+        type="button"
+        class="help-button"
+        id="help-button"
+      >
+        <i class="fa-regular fa-circle-question"></i>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main class="withdraw-shell">
+
+    <section class="withdraw-balance">
+
+      <div class="withdraw-balance-icon">
+        <i class="fa-solid fa-wallet"></i>
+      </div>
+
+      <div>
+        <span>AVAILABLE BALANCE</span>
+        <strong id="available-balance">₹0.00</strong>
+      </div>
+
+    </section>
+
+
+    <section class="withdraw-card">
+
+      <div class="section-heading">
+
+        <span>REQUEST WITHDRAWAL</span>
+
+        <h1>Choose an amount</h1>
+
+        <p>
+          Select an amount you want to request.
+        </p>
+
+      </div>
+
+
+      <div class="amount-grid">
+
+        <button type="button" class="amount-option" data-amount="100">
+          ₹100
+        </button>
+
+        <button type="button" class="amount-option" data-amount="500">
+          ₹500
+        </button>
+
+        <button type="button" class="amount-option" data-amount="1000">
+          ₹1,000
+        </button>
+
+        <button type="button" class="amount-option" data-amount="2000">
+          ₹2,000
+        </button>
+
+        <button type="button" class="amount-option" data-amount="5000">
+          ₹5,000
+        </button>
+
+        <button type="button" class="amount-option" data-amount="10000">
+          ₹10,000
+        </button>
+
+      </div>
+
+
+      <div class="custom-amount">
+
+        <label for="amount">
+          CUSTOM AMOUNT
+        </label>
+
+        <div class="amount-input-wrap">
+
+          <span>₹</span>
+
+          <input
+            type="number"
+            id="amount"
+            min="1"
+            placeholder="Enter amount"
+            inputmode="numeric"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="selected-summary">
+
+        <span>Requested amount</span>
+
+        <strong id="selected-amount">
+          ₹0
+        </strong>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="withdraw-button"
+        id="withdraw-button"
+      >
+
+        <span>Request withdrawal</span>
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+      </button>
+
+    </section>
+
+
+    <section class="method-card">
+
+      <div class="method-heading">
+
+        <span>WITHDRAWAL METHOD</span>
+
+        <strong>Account details</strong>
+
+      </div>
+
+      <div class="method-row">
+
+        <div class="method-icon">
+          <i class="fa-solid fa-building-columns"></i>
+        </div>
+
+        <div class="method-info">
+          <strong>Bank / payout method</strong>
+          <span>Not configured</span>
+        </div>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </div>
+
+    </section>
+
+
+    <section class="withdraw-info">
+
+      <div class="info-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div>
+
+        <strong>Withdrawal information</strong>
+
+        <p>
+          Withdrawal options and account verification will be
+          available when this feature is enabled.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section class="withdraw-limits">
+
+      <div class="limits-heading">
+
+        <span>WITHDRAWAL INFORMATION</span>
+
+        <i class="fa-solid fa-circle-info"></i>
+
+      </div>
+
+      <div class="limit-row">
+        <span>Minimum request</span>
+        <strong>₹100</strong>
+      </div>
+
+      <div class="limit-row">
+        <span>Maximum request</span>
+        <strong>₹10,000</strong>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <nav class="withdraw-bottom-nav">
+
+    <a href="/" class="withdraw-nav-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+
+    <a href="/games.html" class="withdraw-nav-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Games</span>
+    </a>
+
+    <a href="/wallet.html" class="withdraw-nav-item active">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
+
+    <a href="/login.html" class="withdraw-nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </a>
+
+  </nav>
+
+
+  <div class="withdraw-toast" id="withdraw-toast">
+
+    <div class="withdraw-toast-icon">
+      <i class="fa-solid fa-circle-info"></i>
+    </div>
+
+    <div class="withdraw-toast-content">
+
+      <strong id="toast-title">
+        Khelza
+      </strong>
+
+      <span id="toast-message">
+        Something happened.
+      </span>
+
+    </div>
+
+    <button
+      type="button"
+      id="toast-close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+
+  <script src="/js/withdraw.js"></script>
+
+</body>
+</html>
