@@ -1,174 +1,139 @@
-function generateCasinoId() {
-  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-    return `RV-${window.crypto.randomUUID().replace(/-/g, '').substring(0, 8).toUpperCase()}`;
+const loginForm = document.getElementById('login-form');
+const loginValue = document.getElementById('login-value');
+const password = document.getElementById('password');
+
+const loginValueError = document.getElementById('login-value-error');
+const passwordError = document.getElementById('password-error');
+
+const loginSubmit = document.getElementById('login-submit');
+
+const passwordToggle = document.getElementById('password-toggle');
+const forgotPassword = document.getElementById('forgot-password');
+
+const toast = document.getElementById('auth-toast');
+const toastTitle = document.getElementById('toast-title');
+const toastMessage = document.getElementById('toast-message');
+const toastClose = document.getElementById('toast-close');
+
+let toastTimer;
+
+function showToast(title, message, type = 'success') {
+  toastTitle.textContent = title;
+  toastMessage.textContent = message;
+
+  toast.classList.remove('error');
+
+  if (type === 'error') {
+    toast.classList.add('error');
   }
 
-  const random = Math.random().toString(36).substring(2, 10).toUpperCase();
-  return `RV-${random}`;
+  toast.classList.add('show');
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4000);
 }
 
-const authModal = {
-  modal: document.getElementById('auth-modal'),
-
-  open(tab = 'login') {
-    this.modal?.classList.add('active');
-    this.switch(tab);
-  },
-
-  close() {
-    this.modal?.classList.remove('active');
-  },
-
-  switch(tab) {
-    document.querySelectorAll('.tab-btn').forEach(button => {
-      button.classList.toggle('active', button.dataset.tab === tab);
-    });
-
-    document.getElementById('login-form')?.classList.toggle('hidden', tab !== 'login');
-    document.getElementById('signup-form')?.classList.toggle('hidden', tab !== 'signup');
-  }
-};
-
-document.getElementById('signup-form')?.addEventListener('submit', async event => {
-  event.preventDefault();
-
-  const data = {
-    name: document.getElementById('signup-name').value.trim(),
-    email: document.getElementById('signup-email').value.trim().toLowerCase(),
-    phone: document.getElementById('signup-phone').value.trim(),
-    password: document.getElementById('signup-password').value,
-    casinoName: document.getElementById('signup-casino-name').value.trim(),
-    casinoId: generateCasinoId()
-  };
-
-  if (!data.name || !data.email || !data.phone || !data.password || !data.casinoName) {
-    showNotification('Please fill all fields', 'error');
-    return;
-  }
-
-  if (data.password.length < 6) {
-    showNotification('Password must be at least 6 characters', 'error');
-    return;
-  }
-
-  try {
-    const response = await apiFetch('/auth/signup', {
-      method: 'POST',
-      body: data
-    });
-
-    console.log('Signup response:', response);
-
-    if (!response.success) {
-      showNotification(response.message || 'Registration failed', 'error');
-      return;
-    }
-
-    setSession(response.token, response.user);
-    updateUIForLoggedInUser(response.user);
-    authModal.close();
-
-    showNotification(
-      `Welcome to Royal Vegas, ${response.user.casinoName}!`,
-      'success'
-    );
-  } catch (error) {
-    console.error('Signup error:', error);
-    showNotification('Unable to connect to server', 'error');
-  }
+toastClose?.addEventListener('click', () => {
+  toast.classList.remove('show');
 });
 
-document.getElementById('login-form')?.addEventListener('submit', async event => {
+
+function clearErrors() {
+  loginValueError.textContent = '';
+  passwordError.textContent = '';
+}
+
+
+function validateLogin() {
+  clearErrors();
+
+  let valid = true;
+
+  if (!loginValue.value.trim()) {
+    loginValueError.textContent = 'Enter your email or Player ID.';
+    valid = false;
+  }
+
+  if (!password.value) {
+    passwordError.textContent = 'Enter your password.';
+    valid = false;
+  }
+
+  return valid;
+}
+
+
+passwordToggle?.addEventListener('click', () => {
+  const hidden = password.type === 'password';
+
+  password.type = hidden ? 'text' : 'password';
+
+  passwordToggle.innerHTML = hidden
+    ? '<i class="fa-regular fa-eye-slash"></i>'
+    : '<i class="fa-regular fa-eye"></i>';
+
+  passwordToggle.setAttribute(
+    'aria-label',
+    hidden ? 'Hide password' : 'Show password'
+  );
+});
+
+
+forgotPassword?.addEventListener('click', () => {
+  showToast(
+    'Password recovery',
+    'Password recovery will be available soon.',
+    'error'
+  );
+});
+
+
+loginForm?.addEventListener('submit', async event => {
   event.preventDefault();
 
-  const email = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value;
-
-  if (!email || !password) {
-    showNotification('Please enter your login details', 'error');
+  if (!validateLogin()) {
     return;
   }
+
+  loginSubmit.disabled = true;
+  loginSubmit.classList.add('loading');
 
   try {
     const response = await apiFetch('/auth/login', {
       method: 'POST',
       body: {
-        email,
-        password
+        email: loginValue.value.trim(),
+        password: password.value
       }
     });
 
     if (!response.success) {
-      showNotification(response.message || 'Login failed', 'error');
-      return;
+      throw new Error(response.message || 'Login failed');
     }
 
     setSession(response.token, response.user);
-    updateUIForLoggedInUser(response.user);
-    authModal.close();
 
-    showNotification('Welcome back!', 'success');
+    showToast(
+      'Welcome back',
+      'Login successful. Redirecting...'
+    );
+
+    setTimeout(() => {
+      window.location.href = '/games.html';
+    }, 700);
+
   } catch (error) {
-    console.error('Login error:', error);
-    showNotification('Unable to connect to server', 'error');
+    showToast(
+      'Login failed',
+      error.message || 'Unable to sign in.',
+      'error'
+    );
+
+  } finally {
+    loginSubmit.disabled = false;
+    loginSubmit.classList.remove('loading');
   }
 });
-
-function updateUIForLoggedInUser(user) {
-  document.getElementById('guest-view').classList.add('hidden');
-  document.getElementById('user-view').classList.remove('hidden');
-
-  document.getElementById('username-display').textContent =
-    user.casinoName || user.name;
-
-  document.getElementById('player-id').textContent =
-    user.casinoId || '-';
-
-  document.getElementById('player-name').textContent =
-    user.casinoName || user.name;
-
-  updateWalletBalance(user.balance || 0);
-}
-
-function logout() {
-  clearSession();
-
-  document.getElementById('guest-view').classList.remove('hidden');
-  document.getElementById('user-view').classList.add('hidden');
-  document.getElementById('profile-menu')?.classList.remove('active');
-
-  showNotification('Logged out', 'info');
-}
-
-function toggleProfile() {
-  document.getElementById('profile-menu')?.classList.toggle('active');
-}
-
-async function checkAuth() {
-  const user = getUser();
-
-  if (!user || !getToken()) {
-    document.getElementById('guest-view').classList.remove('hidden');
-    document.getElementById('user-view').classList.add('hidden');
-    return;
-  }
-
-  updateUIForLoggedInUser(user);
-
-  try {
-    await fetchWalletBalance();
-  } catch (error) {
-    console.error('Wallet error:', error);
-  }
-}
-
-function startPlaying() {
-  if (!getToken()) {
-    authModal.open('signup');
-    return;
-  }
-
-  location.href = '/games/dice';
-}
-
-document.addEventListener('DOMContentLoaded', checkAuth);
