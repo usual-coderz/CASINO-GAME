@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice · Royal Vegas</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="logo" onclick="location.href='/'"><i class="fas fa-crown"></i><span>ROYAL VEGAS</span></div>
+  <div class="wallet-display"><i class="fas fa-wallet"></i> ₹<span id="wallet-balance">0.00</span></div>
+</header>
+
+<main class="game-page">
+  <div class="game-panel">
+    <h2>🎲 Dice</h2>
+    <p class="muted">Roll over/under. Win chance jitni kam, multiplier utna zyada.</p>
+
+    <div class="dice-result" id="dice-result">--</div>
+    <div class="dice-meta">
+      <span>Target: <b id="target-label">50</b></span>
+      <span>Multiplier: <b id="mult-label">1.96x</b></span>
+      <span>Win chance: <b id="chance-label">49.5%</b></span>
+    </div>
+
+    <div class="range-wrap">
+      <input type="range" id="target-slider" min="2" max="98" value="50">
+      <div class="dir-toggle">
+        <button id="btn-under" class="dir active">Roll UNDER</button>
+        <button id="btn-over" class="dir">Roll OVER</button>
+      </div>
+    </div>
+
+    <div class="bet-row">
+      <input type="number" id="bet-amount" min="10" value="100">
+      <button class="btn btn-gold" id="roll-btn" onclick="rollDice()">ROLL</button>
+    </div>
+    <div class="quick-amounts">
+      <button onclick="setBet(10)">₹10</button>
+      <button onclick="setBet(100)">₹100</button>
+      <button onclick="setBet(500)">₹500</button>
+      <button onclick="setBet(1000)">₹1,000</button>
+      <button onclick="halfBet()">½</button>
+      <button onclick="doubleBet()">2×</button>
+    </div>
+
+    <div class="bet-msg" id="bet-msg"></div>
+    <a class="btn btn-outline" href="/" style="margin-top:16px">← Lobby</a>
+  </div>
+
+  <aside class="history-panel">
+    <h3>Recent Rolls</h3>
+    <div id="history-list"></div>
+  </aside>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/games/dice.js"></script>
+</body>
+</html>
