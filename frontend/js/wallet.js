@@ -14,7 +14,8 @@ let toastTimer;
 
 function getUser() {
   try {
-    return JSON.parse(localStorage.getItem('user')) || null;
+    const data = localStorage.getItem('user');
+    return data ? JSON.parse(data) : null;
   } catch {
     return null;
   }
@@ -24,6 +25,19 @@ function loadUser() {
   const user = getUser();
 
   if (!user) {
+    if (playerName) {
+      playerName.textContent = 'Guest Player';
+    }
+
+    if (playerId) {
+      playerId.textContent = 'KZ-XXXXXX';
+    }
+
+    if (balanceValue) {
+      balanceValue.dataset.balance = '0.00';
+      balanceValue.textContent = '₹0.00';
+    }
+
     return;
   }
 
@@ -100,10 +114,11 @@ toggleBalance?.addEventListener('click', () => {
   updateBalanceVisibility();
 });
 
-toastClose?.addEventListener('click', () => {
-  toast?.classList.remove('show');
-  clearTimeout(toastTimer);
-});
+document
+  .getElementById('profile-menu')
+  ?.addEventListener('click', () => {
+    window.location.href = '/profile.html';
+  });
 
 document
   .querySelectorAll('.wallet-action')
@@ -164,13 +179,9 @@ document
     );
   });
 
-document
-  .getElementById('profile-menu')
-  ?.addEventListener('click', event => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    window.location.href = '/profile.html';
-  });
+toastClose?.addEventListener('click', () => {
+  toast?.classList.remove('show');
+  clearTimeout(toastTimer);
+});
 
 loadUser();
