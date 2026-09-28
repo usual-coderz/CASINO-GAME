@@ -1,154 +1,581 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Royal Vegas Casino</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#090909">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Royal Vegas Casino</title>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-<header class="header">
-  <div class="logo"><i class="fas fa-crown"></i><span>ROYAL VEGAS</span></div>
-  <nav class="nav">
-    <a href="/" class="active">Home</a>
-    <a href="/games/dice">Dice</a>
-    <a href="#promotions">Promotions</a>
-    <a href="#support">Support</a>
-  </nav>
-  <div class="header-actions">
-    <div id="guest-view">
-      <button class="btn btn-outline" onclick="authModal.open('login')">Login</button>
-      <button class="btn btn-primary" onclick="authModal.open('signup')">Sign Up</button>
-    </div>
-    <div id="user-view" class="hidden">
-      <div class="wallet-display" onclick="walletModal.open()">
-        <i class="fas fa-wallet"></i> ₹<span id="wallet-balance">0.00</span>
-      </div>
-      <div class="profile-dropdown">
-        <div class="profile-trigger" onclick="toggleProfile()">
-          <div class="avatar"><i class="fas fa-user"></i></div>
-          <span id="username-display">Player</span>
-        </div>
-        <div class="profile-menu" id="profile-menu">
-          <div class="profile-info">
-            <div>ID: <span id="player-id">-</span></div>
-            <div id="player-name">-</div>
+  <link rel="stylesheet" href="/css/style.css">
+</head><body><div class="page-glow glow-one"></div>
+<div class="page-glow glow-two"></div><header class="header">
+  <div class="header-inner"><a href="/" class="logo">
+  <span class="logo-icon">
+    <i class="fas fa-crown"></i>
+  </span>
+  <span class="logo-text">
+    <strong>ROYAL</strong>
+    <small>VEGAS</small>
+  </span>
+</a>
+
+<nav class="nav">
+  <a href="/" class="active">
+    <i class="fas fa-house"></i>
+    <span>Home</span>
+  </a>
+  <a href="/games/dice">
+    <i class="fas fa-dice"></i>
+    <span>Dice</span>
+  </a>
+  <a href="#promotions">
+    <i class="fas fa-gift"></i>
+    <span>Promotions</span>
+  </a>
+  <a href="#support">
+    <i class="fas fa-headset"></i>
+    <span>Support</span>
+  </a>
+</nav>
+
+<div class="header-actions">
+
+  <div id="guest-view" class="guest-actions">
+    <button class="btn btn-outline" onclick="authModal.open('login')">
+      Login
+    </button>
+    <button class="btn btn-primary" onclick="authModal.open('signup')">
+      Sign Up
+    </button>
+  </div>
+
+  <div id="user-view" class="user-actions hidden">
+
+    <button class="wallet-display" onclick="walletModal.open()">
+      <span class="wallet-icon">
+        <i class="fas fa-wallet"></i>
+      </span>
+      <span class="wallet-info">
+        <small>Balance</small>
+        <strong>₹<span id="wallet-balance">0.00</span></strong>
+      </span>
+    </button>
+
+    <div class="profile-dropdown">
+
+      <button class="profile-trigger" onclick="toggleProfile()">
+        <span class="avatar">
+          <i class="fas fa-user"></i>
+        </span>
+        <span id="username-display">Player</span>
+        <i class="fas fa-chevron-down profile-arrow"></i>
+      </button>
+
+      <div class="profile-menu" id="profile-menu">
+
+        <div class="profile-info">
+          <div class="profile-avatar-large">
+            <i class="fas fa-user"></i>
           </div>
-          <a href="#" onclick="walletModal.open()"><i class="fas fa-wallet"></i> Wallet</a>
-          <a href="/games/dice"><i class="fas fa-dice"></i> Play Dice</a>
-          <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <div>
+            <strong id="player-name">Player</strong>
+            <span>ID: <b id="player-id">-</b></span>
+          </div>
         </div>
+
+        <div class="profile-divider"></div>
+
+        <a href="#" onclick="walletModal.open(); return false;">
+          <i class="fas fa-wallet"></i>
+          <span>My Wallet</span>
+        </a>
+
+        <a href="/games/dice">
+          <i class="fas fa-dice"></i>
+          <span>Play Dice</span>
+        </a>
+
+        <a href="#" onclick="logout(); return false;" class="logout">
+          <i class="fas fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </a>
+
       </div>
     </div>
   </div>
-</header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Royal Vegas</h1>
-    <p>Deposit, play, withdraw — sab ek jagah</p>
-    <button class="btn btn-gold btn-large" onclick="startPlaying()">Play Dice Now</button>
+</div>
+
   </div>
-</section>
+</header><main><section class="hero">  <div class="hero-overlay"></div>  <div class="hero-content"><div class="hero-badge">
+  <span class="live-dot"></span>
+  PREMIUM GAMING EXPERIENCE
+</div>
 
-<section class="games" id="games">
-  <h2 class="section-title">Popular Games</h2>
-  <div class="games-grid">
-    <div class="game-card" onclick="startPlaying()">
-      <div class="game-icon">🎲</div><h3>Dice</h3>
-      <p>Roll over/under, up to 49x payout</p>
-      <button class="btn btn-play">Play Now</button>
-    </div>
-    <div class="game-card locked"><div class="game-icon">🎰</div><h3>Slots</h3><p>Coming soon</p></div>
-    <div class="game-card locked"><div class="game-icon">🃏</div><h3>Blackjack</h3><p>Coming soon</p></div>
-    <div class="game-card locked"><div class="game-icon">🎯</div><h3>Crash</h3><p>Coming soon</p></div>
+<h1>
+  Your Game.<br>
+  <span>Your Royal Moment.</span>
+</h1>
+
+<p>
+  Experience premium casino games with a smooth,
+  secure and modern gaming experience.
+</p>
+
+<div class="hero-actions">
+  <button class="btn btn-gold btn-large" onclick="startPlaying()">
+    <i class="fas fa-dice"></i>
+    Play Dice
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+  <a href="#games" class="hero-secondary">
+    Explore Games
+    <i class="fas fa-chevron-down"></i>
+  </a>
+</div>
+
+<div class="hero-stats">
+  <div>
+    <strong>24/7</strong>
+    <span>Gaming</span>
   </div>
-</section>
-
-<!-- AUTH MODAL -->
-<div class="modal" id="auth-modal">
-  <div class="modal-content">
-    <span class="close" onclick="authModal.close()">&times;</span>
-    <div class="auth-tabs">
-      <button class="tab-btn active" data-tab="login" onclick="authModal.switch('login')">Login</button>
-      <button class="tab-btn" data-tab="signup" onclick="authModal.switch('signup')">Sign Up</button>
-    </div>
-
-    <form id="login-form" class="auth-form">
-      <h3>Welcome Back</h3>
-      <div class="form-group"><label>Email or Player ID</label>
-        <input type="text" id="login-email" required></div>
-      <div class="form-group"><label>Password</label>
-        <input type="password" id="login-password" required></div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </form>
-
-    <form id="signup-form" class="auth-form hidden">
-      <h3>Create Account</h3>
-      <div class="form-group"><label>Full Name</label>
-        <input type="text" id="signup-name" required></div>
-      <div class="form-group"><label>Email</label>
-        <input type="email" id="signup-email" required></div>
-      <div class="form-group"><label>Phone</label>
-        <input type="tel" id="signup-phone" required></div>
-      <div class="form-group"><label>Password</label>
-        <input type="password" id="signup-password" required></div>
-      <div class="form-group"><label>Casino Name</label>
-        <input type="text" id="signup-casino-name" required placeholder="e.g. LuckyTiger007"></div>
-      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-    </form>
+  <div class="stat-line"></div>
+  <div>
+    <strong>Fast</strong>
+    <span>Experience</span>
+  </div>
+  <div class="stat-line"></div>
+  <div>
+    <strong>Secure</strong>
+    <span>Wallet</span>
   </div>
 </div>
 
-<!-- WALLET MODAL -->
-<div class="modal" id="wallet-modal">
-  <div class="modal-content">
-    <span class="close" onclick="walletModal.close()">&times;</span>
+  </div>  <div class="hero-decoration">
+    <div class="floating-chip chip-one">₹</div>
+    <div class="floating-chip chip-two">♠</div>
+    <div class="floating-chip chip-three">♛</div>
+  </div></section><section class="games-section" id="games">  <div class="section-heading">
+    <div>
+      <span class="section-kicker">GAME LOBBY</span>
+      <h2>Popular Games</h2>
+    </div><span class="game-count">
+  <span class="live-dot"></span>
+  1 Available
+</span>
+
+  </div>  <div class="games-grid"><article class="game-card featured" onclick="startPlaying()">
+
+  <div class="game-card-glow"></div>
+
+  <div class="game-top">
+    <span class="game-status">
+      <span class="live-dot"></span>
+      LIVE
+    </span>
+
+    <span class="game-rating">
+      <i class="fas fa-star"></i>
+      4.9
+    </span>
+  </div>
+
+  <div class="game-visual dice-visual">
+    <div class="dice-shadow"></div>
+    <div class="dice">⚄</div>
+  </div>
+
+  <div class="game-details">
+    <div>
+      <span class="game-category">CASINO</span>
+      <h3>Dice</h3>
+    </div>
+
+    <div class="game-payout">
+      <span>UP TO</span>
+      <strong>49x</strong>
+    </div>
+  </div>
+
+  <p>
+    Roll over or under and test your luck with every round.
+  </p>
+
+  <button class="btn btn-play">
+    Play Now
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+</article>
+
+
+<article class="game-card locked">
+
+  <div class="locked-overlay">
+    <span>
+      <i class="fas fa-lock"></i>
+      Coming Soon
+    </span>
+  </div>
+
+  <div class="game-top">
+    <span class="game-status muted">SOON</span>
+  </div>
+
+  <div class="game-visual">
+    <div class="game-emoji">🎰</div>
+  </div>
+
+  <div class="game-details">
+    <div>
+      <span class="game-category">CASINO</span>
+      <h3>Slots</h3>
+    </div>
+  </div>
+
+  <p>Classic slots with a modern experience.</p>
+
+</article>
+
+
+<article class="game-card locked">
+
+  <div class="locked-overlay">
+    <span>
+      <i class="fas fa-lock"></i>
+      Coming Soon
+    </span>
+  </div>
+
+  <div class="game-top">
+    <span class="game-status muted">SOON</span>
+  </div>
+
+  <div class="game-visual">
+    <div class="game-emoji">🃏</div>
+  </div>
+
+  <div class="game-details">
+    <div>
+      <span class="game-category">TABLE</span>
+      <h3>Blackjack</h3>
+    </div>
+  </div>
+
+  <p>Classic blackjack experience coming soon.</p>
+
+</article>
+
+
+<article class="game-card locked">
+
+  <div class="locked-overlay">
+    <span>
+      <i class="fas fa-lock"></i>
+      Coming Soon
+    </span>
+  </div>
+
+  <div class="game-top">
+    <span class="game-status muted">SOON</span>
+  </div>
+
+  <div class="game-visual">
+    <div class="game-emoji">🚀</div>
+  </div>
+
+  <div class="game-details">
+    <div>
+      <span class="game-category">ARCADE</span>
+      <h3>Crash</h3>
+    </div>
+  </div>
+
+  <p>Watch the multiplier rise in real time.</p>
+
+</article>
+
+  </div>
+</section><section class="trust-section">  <div class="trust-item">
+    <span class="trust-icon">
+      <i class="fas fa-shield-halved"></i>
+    </span>
+    <div>
+      <strong>Secure Wallet</strong>
+      <span>Protected transactions</span>
+    </div>
+  </div>  <div class="trust-item">
+    <span class="trust-icon">
+      <i class="fas fa-bolt"></i>
+    </span>
+    <div>
+      <strong>Fast Experience</strong>
+      <span>Quick and responsive</span>
+    </div>
+  </div>  <div class="trust-item">
+    <span class="trust-icon">
+      <i class="fas fa-headset"></i>
+    </span>
+    <div>
+      <strong>Support</strong>
+      <span>We're here to help</span>
+    </div>
+  </div></section></main><div class="modal" id="auth-modal">  <div class="modal-backdrop"></div>  <div class="modal-content auth-modal-content"><button class="close" onclick="authModal.close()">
+  <i class="fas fa-xmark"></i>
+</button>
+
+<div class="modal-brand">
+  <span class="modal-crown">
+    <i class="fas fa-crown"></i>
+  </span>
+  <span>ROYAL VEGAS</span>
+</div>
+
+<div class="auth-tabs">
+  <button class="tab-btn active" data-tab="login" onclick="authModal.switch('login')">
+    Login
+  </button>
+  <button class="tab-btn" data-tab="signup" onclick="authModal.switch('signup')">
+    Create Account
+  </button>
+</div>
+
+
+<form id="login-form" class="auth-form">
+
+  <div class="form-heading">
+    <h3>Welcome Back</h3>
+    <p>Sign in to continue playing.</p>
+  </div>
+
+  <div class="form-group">
+    <label>Email or Player ID</label>
+    <div class="input-wrap">
+      <i class="fas fa-user"></i>
+      <input type="text" id="login-email" placeholder="Enter email or player ID" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <div class="input-wrap">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="login-password" placeholder="Enter password" required>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">
+    Login
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+</form>
+
+
+<form id="signup-form" class="auth-form hidden">
+
+  <div class="form-heading">
+    <h3>Create Account</h3>
+    <p>Join Royal Vegas today.</p>
+  </div>
+
+  <div class="form-group">
+    <label>Full Name</label>
+    <div class="input-wrap">
+      <i class="fas fa-user"></i>
+      <input type="text" id="signup-name" placeholder="Your full name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <div class="input-wrap">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="signup-email" placeholder="you@example.com" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Phone</label>
+    <div class="input-wrap">
+      <i class="fas fa-phone"></i>
+      <input type="tel" id="signup-phone" placeholder="Mobile number" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <div class="input-wrap">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="signup-password" placeholder="Create a password" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Casino Name</label>
+    <div class="input-wrap">
+      <i class="fas fa-at"></i>
+      <input type="text" id="signup-casino-name" placeholder="e.g. LuckyTiger007" required>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">
+    Create Account
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+</form>
+
+  </div>
+</div><div class="modal" id="wallet-modal">  <div class="modal-backdrop"></div>  <div class="modal-content wallet-modal-content"><button class="close" onclick="walletModal.close()">
+  <i class="fas fa-xmark"></i>
+</button>
+
+<div class="wallet-header">
+  <div>
+    <span class="section-kicker">ACCOUNT</span>
     <h2><i class="fas fa-wallet"></i> My Wallet</h2>
-
-    <div class="wallet-balance-card">
-      <div class="balance-label">Total Balance</div>
-      <div class="balance-amount">₹<span id="modal-wallet-balance">0.00</span></div>
-      <div class="balance-actions">
-        <button class="btn btn-success" onclick="showDeposit()"><i class="fas fa-plus"></i> Deposit</button>
-        <button class="btn btn-warning" onclick="showWithdraw()"><i class="fas fa-minus"></i> Withdraw</button>
-      </div>
-    </div>
-
-    <div id="deposit-section" class="wallet-section">
-      <h3>Add Money</h3>
-      <div class="quick-amounts">
-        <button onclick="setAmount(500)">₹500</button>
-        <button onclick="setAmount(1000)">₹1,000</button>
-        <button onclick="setAmount(5000)">₹5,000</button>
-        <button onclick="setAmount(10000)">₹10,000</button>
-      </div>
-      <div class="form-group"><label>Amount (₹)</label>
-        <input type="number" id="deposit-amount" min="100" placeholder="Minimum ₹100"></div>
-      <button class="btn btn-success btn-block" onclick="processDeposit()">Proceed to Pay</button>
-    </div>
-
-    <div id="withdraw-section" class="wallet-section hidden">
-      <h3>Withdraw Money</h3>
-      <div class="form-group"><label>UPI ID</label>
-        <input type="text" id="withdraw-upi" placeholder="name@upi"></div>
-      <div class="form-group"><label>Holder Name</label>
-        <input type="text" id="withdraw-name"></div>
-      <div class="form-group"><label>Amount (₹)</label>
-        <input type="number" id="withdraw-amount" min="100"></div>
-      <button class="btn btn-warning btn-block" onclick="processWithdraw()">Request Withdrawal</button>
-    </div>
-
-    <div class="transaction-history">
-      <h3>Recent Transactions</h3>
-      <div id="transactions-list"><div class="empty-state">No transactions yet</div></div>
-    </div>
   </div>
+  <span class="wallet-secure">
+    <i class="fas fa-shield-halved"></i>
+    Secure
+  </span>
 </div>
 
-<script src="/js/api.js"></script>
-<script src="/js/auth.js"></script>
-<script src="/js/wallet.js"></script>
-</body>
+
+<div class="wallet-balance-card">
+
+  <div class="balance-top">
+    <span>Total Balance</span>
+    <i class="fas fa-wallet"></i>
+  </div>
+
+  <div class="balance-amount">
+    ₹<span id="modal-wallet-balance">0.00</span>
+  </div>
+
+  <div class="balance-label">
+    Available balance
+  </div>
+
+  <div class="balance-actions">
+    <button class="btn btn-success" onclick="showDeposit()">
+      <i class="fas fa-plus"></i>
+      Deposit
+    </button>
+
+    <button class="btn btn-warning" onclick="showWithdraw()">
+      <i class="fas fa-arrow-up-right-from-square"></i>
+      Withdraw
+    </button>
+  </div>
+
+</div>
+
+
+<div id="deposit-section" class="wallet-section">
+
+  <div class="wallet-section-heading">
+    <div>
+      <span class="section-kicker">ADD FUNDS</span>
+      <h3>Deposit Money</h3>
+    </div>
+  </div>
+
+  <div class="quick-amounts">
+    <button onclick="setAmount(500)">₹500</button>
+    <button onclick="setAmount(1000)">₹1,000</button>
+    <button onclick="setAmount(5000)">₹5,000</button>
+    <button onclick="setAmount(10000)">₹10,000</button>
+  </div>
+
+  <div class="form-group">
+    <label>Amount</label>
+    <div class="input-wrap">
+      <span class="currency-symbol">₹</span>
+      <input type="number" id="deposit-amount" min="100" placeholder="Enter amount">
+    </div>
+  </div>
+
+  <button class="btn btn-success btn-block" onclick="processDeposit()">
+    Proceed to Pay
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+</div>
+
+
+<div id="withdraw-section" class="wallet-section hidden">
+
+  <div class="wallet-section-heading">
+    <div>
+      <span class="section-kicker">PAYOUT</span>
+      <h3>Withdraw Money</h3>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>UPI ID</label>
+    <div class="input-wrap">
+      <i class="fas fa-building-columns"></i>
+      <input type="text" id="withdraw-upi" placeholder="name@upi">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Holder Name</label>
+    <div class="input-wrap">
+      <i class="fas fa-user"></i>
+      <input type="text" id="withdraw-name" placeholder="Account holder name">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Amount</label>
+    <div class="input-wrap">
+      <span class="currency-symbol">₹</span>
+      <input type="number" id="withdraw-amount" min="100" placeholder="Enter amount">
+    </div>
+  </div>
+
+  <button class="btn btn-warning btn-block" onclick="processWithdraw()">
+    Request Withdrawal
+    <i class="fas fa-arrow-right"></i>
+  </button>
+
+</div>
+
+
+<div class="transaction-history">
+
+  <div class="transaction-heading">
+    <h3>Recent Transactions</h3>
+    <span>History</span>
+  </div>
+
+  <div id="transactions-list">
+    <div class="empty-state">
+      <span>
+        <i class="fas fa-receipt"></i>
+      </span>
+      <strong>No transactions yet</strong>
+      <small>Your recent wallet activity will appear here.</small>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+</div><footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-crown"><i class="fas fa-crown"></i></span>
+      <span>ROYAL VEGAS</span>
+    </div>
+    <p>Smooth gaming experience.</p>
+  </div>
+</footer><script src="/js/api.js"></script><script src="/js/auth.js"></script><script src="/js/wallet.js"></script></body>
 </html>
