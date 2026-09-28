@@ -20,354 +20,402 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
 
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/scheme.css">
+  <link rel="stylesheet" href="/css/style.css?v=4">
+  <link rel="stylesheet" href="/css/scheme.css?v=4">
 </head>
 
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
+<header class="site-header">
+  <div class="container header-inner">
 
-      <a href="/" class="logo">
-        <span class="logo-mark">K</span>
-        <span class="logo-name">Khelza</span>
-      </a>
+    <a href="/" class="logo">
+      <span class="logo-mark">K</span>
+      <span class="logo-name">Khelza</span>
+    </a>
 
-      <nav class="desktop-nav">
+    <nav class="desktop-nav" id="site-nav">
+      <a href="/">Home</a>
+      <a href="/games.html">Games</a>
+      <a href="/scheme.html" class="active">Offers</a>
+      <a href="/#support">Support</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="/login.html" class="login-link">Login</a>
+      <a href="/signup.html" class="signup-btn">Create account</a>
+    </div>
+
+    <button
+      class="mobile-menu-btn"
+      id="mobile-menu-btn"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="scheme-hero">
+    <div class="container">
+
+      <div class="scheme-breadcrumb">
         <a href="/">Home</a>
-        <a href="/games.html">Games</a>
-        <a href="/scheme.html" class="active">Offers</a>
-        <a href="/#support">Support</a>
-      </nav>
-
-      <div class="header-actions">
-        <a href="/login.html" class="login-link">Login</a>
-        <a href="/signup.html" class="signup-btn">Create account</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>Offers</span>
       </div>
 
-      <button class="mobile-menu-btn" type="button" aria-label="Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <div class="scheme-hero-content">
 
-    </div>
-  </header>
+        <div class="scheme-hero-copy">
 
+          <span class="scheme-label">
+            <i class="fa-solid fa-sparkles"></i>
+            KHELZA OFFERS
+          </span>
 
-  <main>
+          <h1>
+            Offers made
+            <span>for players.</span>
+          </h1>
 
-    <section class="scheme-hero">
-      <div class="container">
+          <p>
+            Explore the latest promotions, events and updates
+            available across Khelza.
+          </p>
 
-        <div class="scheme-breadcrumb">
-          <a href="/">Home</a>
-          <i class="fa-solid fa-chevron-right"></i>
-          <span>Offers</span>
-        </div>
+          <div class="hero-actions">
+            <a href="/games.html" class="hero-primary">
+              Explore games
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
-        <div class="scheme-hero-content">
-
-          <div>
-            <span class="scheme-label">
-              <i class="fa-solid fa-sparkles"></i>
-              KHELZA OFFERS
-            </span>
-
-            <h1>
-              Offers made
-              <span>for players.</span>
-            </h1>
-
-            <p>
-              Explore the latest promotions, events and updates
-              available across Khelza.
-            </p>
+            <a href="/signup.html" class="hero-secondary">
+              Create account
+            </a>
           </div>
 
-          <div class="scheme-hero-icon">
+        </div>
+
+        <div class="scheme-hero-icon">
+          <div class="hero-icon-circle">
             <i class="fa-solid fa-gift"></i>
           </div>
 
+          <span>OFFERS</span>
         </div>
 
       </div>
-    </section>
+
+    </div>
+  </section>
 
 
-    <section class="offers-page">
-      <div class="container">
+  <section class="offers-page">
+    <div class="container">
 
-        <div class="offers-page-heading">
-          <div>
-            <span>AVAILABLE NOW</span>
-            <h2>Featured promotions</h2>
-          </div>
+      <div class="offers-page-heading">
 
-          <div class="offer-status">
-            <i></i>
-            Updated regularly
-          </div>
+        <div>
+          <span>AVAILABLE NOW</span>
+          <h2>Featured promotions</h2>
         </div>
 
-
-        <div class="scheme-grid">
-
-          <article class="scheme-card featured">
-
-            <div class="scheme-card-visual">
-              <span class="scheme-card-badge">
-                FEATURED
-              </span>
-
-              <div class="scheme-visual-content">
-                <small>KHELZA</small>
-                <strong>Special</strong>
-                <strong>Offers</strong>
-                <p>Discover what's available.</p>
-              </div>
-
-              <div class="scheme-circle"></div>
-            </div>
-
-            <div class="scheme-card-body">
-
-              <div class="scheme-card-meta">
-                <span>
-                  <i class="fa-regular fa-calendar"></i>
-                  Limited promotion
-                </span>
-              </div>
-
-              <h3>Explore Khelza offers</h3>
-
-              <p>
-                Keep up with the latest promotions and announcements
-                from Khelza.
-              </p>
-
-              <button
-                type="button"
-                class="scheme-action"
-                data-action="featured"
-              >
-                View details
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article class="scheme-card">
-
-            <div class="scheme-card-visual green-visual">
-              <span class="scheme-card-badge">
-                UPDATE
-              </span>
-
-              <div class="scheme-visual-content">
-                <small>NEW</small>
-                <strong>More</strong>
-                <strong>Coming Soon</strong>
-                <p>Stay tuned.</p>
-              </div>
-
-              <div class="scheme-grid-pattern"></div>
-            </div>
-
-            <div class="scheme-card-body">
-
-              <div class="scheme-card-meta">
-                <span>
-                  <i class="fa-regular fa-bell"></i>
-                  Announcement
-                </span>
-              </div>
-
-              <h3>New experiences</h3>
-
-              <p>
-                New games and features are being prepared for
-                the Khelza lobby.
-              </p>
-
-              <button
-                type="button"
-                class="scheme-action"
-                data-action="coming"
-              >
-                Stay updated
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article class="scheme-card">
-
-            <div class="scheme-card-visual dark-visual">
-              <span class="scheme-card-badge">
-                COMMUNITY
-              </span>
-
-              <div class="scheme-visual-content">
-                <small>KHELZA</small>
-                <strong>Player</strong>
-                <strong>Updates</strong>
-                <p>Latest news & updates.</p>
-              </div>
-
-              <div class="dark-circle"></div>
-            </div>
-
-            <div class="scheme-card-body">
-
-              <div class="scheme-card-meta">
-                <span>
-                  <i class="fa-solid fa-bullhorn"></i>
-                  Latest update
-                </span>
-              </div>
-
-              <h3>Khelza announcements</h3>
-
-              <p>
-                Check this section regularly for new announcements
-                and platform updates.
-              </p>
-
-              <button
-                type="button"
-                class="scheme-action"
-                data-action="updates"
-              >
-                View update
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <article class="scheme-card">
-
-            <div class="scheme-card-visual light-visual">
-              <span class="scheme-card-badge">
-                SOON
-              </span>
-
-              <div class="scheme-visual-content">
-                <small>COMING</small>
-                <strong>New</strong>
-                <strong>Promotions</strong>
-                <p>Watch this space.</p>
-              </div>
-
-              <div class="light-shape"></div>
-            </div>
-
-            <div class="scheme-card-body">
-
-              <div class="scheme-card-meta">
-                <span>
-                  <i class="fa-regular fa-clock"></i>
-                  Coming soon
-                </span>
-              </div>
-
-              <h3>More promotions</h3>
-
-              <p>
-                Additional promotions will appear here when
-                they become available.
-              </p>
-
-              <button
-                type="button"
-                class="scheme-action"
-                data-action="soon"
-              >
-                Notify me
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-
-            </div>
-
-          </article>
-
+        <div class="offer-status">
+          <i></i>
+          Updated regularly
         </div>
 
       </div>
-    </section>
 
 
-    <section class="scheme-info">
-      <div class="container">
+      <div class="scheme-grid">
 
-        <div class="scheme-info-box">
+        <article class="scheme-card featured">
 
-          <div class="scheme-info-icon">
-            <i class="fa-solid fa-circle-info"></i>
+          <div class="scheme-card-visual">
+
+            <span class="scheme-card-badge">
+              FEATURED
+            </span>
+
+            <div class="scheme-visual-content">
+              <small>KHELZA</small>
+              <strong>Special</strong>
+              <strong>Offers</strong>
+              <p>Discover what's available.</p>
+            </div>
+
+            <div class="scheme-circle"></div>
+
           </div>
 
-          <div>
-            <h3>Keep checking this page</h3>
+          <div class="scheme-card-body">
+
+            <div class="scheme-card-meta">
+              <span>
+                <i class="fa-regular fa-calendar"></i>
+                Limited promotion
+              </span>
+            </div>
+
+            <h3>Explore Khelza offers</h3>
+
             <p>
-              Offers and announcements can change over time.
-              Visit this page to see the latest Khelza updates.
+              Keep up with the latest promotions and announcements
+              from Khelza.
             </p>
+
+            <button
+              type="button"
+              class="scheme-action"
+              data-title="Khelza Offers"
+              data-message="Check back regularly for the latest offers and announcements."
+            >
+              View details
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
           </div>
 
+        </article>
+
+
+        <article class="scheme-card">
+
+          <div class="scheme-card-visual green-visual">
+
+            <span class="scheme-card-badge">
+              UPDATE
+            </span>
+
+            <div class="scheme-visual-content">
+              <small>NEW</small>
+              <strong>More</strong>
+              <strong>Coming Soon</strong>
+              <p>Stay tuned.</p>
+            </div>
+
+            <div class="scheme-grid-pattern"></div>
+
+          </div>
+
+          <div class="scheme-card-body">
+
+            <div class="scheme-card-meta">
+              <span>
+                <i class="fa-regular fa-bell"></i>
+                Announcement
+              </span>
+            </div>
+
+            <h3>New experiences</h3>
+
+            <p>
+              New games and features are being prepared for
+              the Khelza lobby.
+            </p>
+
+            <button
+              type="button"
+              class="scheme-action"
+              data-title="Coming soon"
+              data-message="New experiences will be announced here when available."
+            >
+              Stay updated
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="scheme-card">
+
+          <div class="scheme-card-visual dark-visual">
+
+            <span class="scheme-card-badge">
+              COMMUNITY
+            </span>
+
+            <div class="scheme-visual-content">
+              <small>KHELZA</small>
+              <strong>Player</strong>
+              <strong>Updates</strong>
+              <p>Latest news & updates.</p>
+            </div>
+
+            <div class="dark-circle"></div>
+
+          </div>
+
+          <div class="scheme-card-body">
+
+            <div class="scheme-card-meta">
+              <span>
+                <i class="fa-solid fa-bullhorn"></i>
+                Latest update
+              </span>
+            </div>
+
+            <h3>Khelza announcements</h3>
+
+            <p>
+              Check this section regularly for new announcements
+              and platform updates.
+            </p>
+
+            <button
+              type="button"
+              class="scheme-action"
+              data-title="Khelza announcements"
+              data-message="There are no new announcements right now."
+            >
+              View update
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="scheme-card">
+
+          <div class="scheme-card-visual light-visual">
+
+            <span class="scheme-card-badge">
+              SOON
+            </span>
+
+            <div class="scheme-visual-content">
+              <small>COMING</small>
+              <strong>New</strong>
+              <strong>Promotions</strong>
+              <p>Watch this space.</p>
+            </div>
+
+            <div class="light-shape"></div>
+
+          </div>
+
+          <div class="scheme-card-body">
+
+            <div class="scheme-card-meta">
+              <span>
+                <i class="fa-regular fa-clock"></i>
+                Coming soon
+              </span>
+            </div>
+
+            <h3>More promotions</h3>
+
+            <p>
+              Additional promotions will appear here when
+              they become available.
+            </p>
+
+            <button
+              type="button"
+              class="scheme-action"
+              data-title="More promotions"
+              data-message="We'll show new promotions here when they're available."
+            >
+              Notify me
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="scheme-info">
+    <div class="container">
+
+      <div class="scheme-info-box">
+
+        <div class="scheme-info-icon">
+          <i class="fa-solid fa-circle-info"></i>
+        </div>
+
+        <div>
+          <h3>Keep checking this page</h3>
+
+          <p>
+            Offers and announcements can change over time.
+            Visit this page to see the latest Khelza updates.
+          </p>
         </div>
 
       </div>
-    </section>
-
-  </main>
-
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-
-      <a href="/" class="logo">
-        <span class="logo-mark">K</span>
-        <span class="logo-name">Khelza</span>
-      </a>
-
-      <p>© 2026 Khelza. All rights reserved.</p>
-
-      <div class="footer-links">
-        <a href="/scheme.html">Offers</a>
-        <a href="/#support">Support</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-      </div>
 
     </div>
-  </footer>
+  </section>
+
+</main>
 
 
-  <div class="scheme-toast" id="scheme-toast">
-    <span class="scheme-toast-icon">
-      <i class="fa-solid fa-check"></i>
-    </span>
+<footer class="site-footer">
 
-    <div>
-      <strong id="toast-title">Khelza</strong>
-      <p id="toast-message">Thanks for checking the offers.</p>
+  <div class="container footer-inner">
+
+    <a href="/" class="logo">
+      <span class="logo-mark">K</span>
+      <span class="logo-name">Khelza</span>
+    </a>
+
+    <p>
+      © 2026 Khelza. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+      <a href="/scheme.html">Offers</a>
+      <a href="/#support">Support</a>
+      <a href="/login.html">Login</a>
+      <a href="/signup.html">Create account</a>
     </div>
 
-    <button type="button" id="toast-close">
-      <i class="fa-solid fa-xmark"></i>
-    </button>
   </div>
 
+</footer>
 
-  <script src="/js/scheme.js"></script>
+
+<div class="scheme-toast" id="scheme-toast">
+
+  <span class="scheme-toast-icon">
+    <i class="fa-solid fa-check"></i>
+  </span>
+
+  <div class="scheme-toast-content">
+    <strong id="toast-title">Khelza</strong>
+    <p id="toast-message">Thanks for checking the offers.</p>
+  </div>
+
+  <button
+    type="button"
+    id="toast-close"
+    aria-label="Close notification"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+
+</div>
+
+
+<script src="/js/scheme.js?v=4"></script>
 
 </body>
 </html>
