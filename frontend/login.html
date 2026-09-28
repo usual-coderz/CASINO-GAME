@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Login — Khelza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body class="auth-page">
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+
+      <a href="/" class="logo">
+        <span class="logo-mark">K</span>
+        <span class="logo-name">Khelza</span>
+      </a>
+
+      <a href="/signup.html" class="auth-header-link">
+        Create account
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+  </header>
+
+
+  <main class="auth-main">
+
+    <div class="auth-decoration auth-decoration-one"></div>
+    <div class="auth-decoration auth-decoration-two"></div>
+
+    <section class="auth-container">
+
+      <div class="auth-card">
+
+        <div class="auth-heading">
+
+          <div class="auth-icon">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          </div>
+
+          <span class="auth-eyebrow">WELCOME BACK</span>
+
+          <h1>Sign in to Khelza</h1>
+
+          <p>
+            Enter your account details to continue.
+          </p>
+
+        </div>
+
+
+        <form id="login-form" class="auth-form" novalidate>
+
+          <div class="form-group">
+
+            <label for="login-value">
+              Email or Player ID
+            </label>
+
+            <div class="input-wrap">
+
+              <i class="fa-regular fa-user"></i>
+
+              <input
+                type="text"
+                id="login-value"
+                name="loginValue"
+                placeholder="Email or Player ID"
+                autocomplete="username"
+                required
+              >
+
+            </div>
+
+            <small class="field-error" id="login-value-error"></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <div class="password-label-row">
+
+              <label for="password">
+                Password
+              </label>
+
+              <button
+                type="button"
+                class="forgot-btn"
+                id="forgot-password"
+              >
+                Forgot password?
+              </button>
+
+            </div>
+
+            <div class="input-wrap">
+
+              <i class="fa-solid fa-lock"></i>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="password-toggle"
+                aria-label="Show password"
+              >
+                <i class="fa-regular fa-eye"></i>
+              </button>
+
+            </div>
+
+            <small class="field-error" id="password-error"></small>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="auth-submit"
+            id="login-submit"
+          >
+            <span class="submit-text">Sign in</span>
+
+            <span class="submit-loading">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              Signing in...
+            </span>
+
+            <i class="fa-solid fa-arrow-right submit-arrow"></i>
+          </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+          <span>OR</span>
+        </div>
+
+
+        <div class="auth-register">
+
+          <span>Don't have an account?</span>
+
+          <a href="/signup.html">
+            Create account
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+
+        </div>
+
+
+        <div class="auth-security">
+
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <span>
+            Your account session is protected.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="auth-back">
+
+        <a href="/">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Khelza
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <div class="auth-toast" id="auth-toast">
+
+    <div class="auth-toast-icon">
+      <i class="fa-solid fa-circle-check" id="toast-icon"></i>
+    </div>
+
+    <div class="auth-toast-content">
+
+      <strong id="toast-title">
+        Message
+      </strong>
+
+      <p id="toast-message">
+        Something happened.
+      </p>
+
+    </div>
+
+    <button type="button" id="toast-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+
+</body>
+</html>
