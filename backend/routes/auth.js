@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const User = require('../models/User');
 
-const signToken = (userId) => {
+function signToken(userId) {
   if (!process.env.JWT_SECRET) {
     throw new Error('JWT_SECRET is not configured');
   }
@@ -14,17 +14,19 @@ const signToken = (userId) => {
     process.env.JWT_SECRET,
     { expiresIn: '7d' }
   );
-};
+}
 
-const publicUser = (u) => ({
-  id: u._id,
-  name: u.name,
-  email: u.email,
-  casinoName: u.casinoName,
-  casinoId: u.casinoId,
-  phone: u.phone,
-  balance: u.balance
-});
+function publicUser(user) {
+  return {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    casinoName: user.casinoName,
+    casinoId: user.casinoId,
+    phone: user.phone,
+    balance: user.balance
+  };
+}
 
 router.post('/signup', async (req, res) => {
   try {
@@ -51,27 +53,29 @@ router.post('/signup', async (req, res) => {
       });
     }
 
-    const normalizedEmail = email.trim().toLowerCase();
-    const normalizedCasinoName = casinoName.trim();
-    const normalizedCasinoId = casinoId.trim();
+    const cleanName = name.trim();
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPhone = phone.trim();
+    const cleanCasinoName = casinoName.trim();
+    const cleanCasinoId = casinoId.trim();
 
-    const exists = await User.findOne({
+    const existingUser = await User.findOne({
       $or: [
-        { email: normalizedEmail },
-        { casinoName: normalizedCasinoName },
-        { casinoId: normalizedCasinoId }
+        { email: cleanEmail },
+        { casinoName: cleanCasinoName },
+        { casinoId: cleanCasinoId }
       ]
     });
 
-    if (exists) {
-      if (exists.email === normalizedEmail) {
+    if (existingUser) {
+      if (existingUser.email === cleanEmail) {
         return res.status(409).json({
           success: false,
           message: 'Email already registered'
         });
       }
 
-      if (exists.casinoName === normalizedCasinoName) {
+      if (existingUser.casinoName === cleanCasinoName) {
         return res.status(409).json({
           success: false,
           message: 'Casino name already exists'
@@ -85,35 +89,44 @@ router.post('/signup', async (req, res) => {
     }
 
     const user = await User.create({
-      name: name.trim(),
-      email: normalizedEmail,
-      phone: phone.trim(),
+      name: cleanName,
+      email: cleanEmail,
+      phone: cleanPhone,
       password,
-      casinoName: normalizedCasinoName,
-      casinoId: normalizedCasinoId
+      casinoName: cleanCasinoName,
+      casinoId: cleanCasinoId
     });
 
     const token = signToken(user._id);
 
     return res.status(201).json({
       success: true,
+      message: 'Registration successful',
       token,
       user: publicUser(user)
     });
 
-  } catch (e) {
-    console.error('Signup error:', e);
+  } catch (error) {
+    console.error('Signup error:', error);
 
-    if (e.code === 11000) {
+    if (error.code === 11000) {
+      const field = Object.keys(error.keyPattern || {})[0];
+
+      const messages = {
+        email: 'Email already registered',
+        casinoName: 'Casino name already exists',
+        casinoId: 'Casino ID already exists'
+      };
+
       return res.status(409).json({
         success: false,
-        message: 'Email, casino name, or casino ID already exists'
+        message: messages[field] || 'Account already exists'
       });
     }
 
     return res.status(500).json({
       success: false,
-      message: e.message || 'Registration failed'
+      message: error.message || 'Registration failed'
     });
   }
 });
@@ -125,7 +138,7 @@ router.post('/login', async (req, res) => {
     if (!email || !password) {
       return res.status(400).json({
         success: false,
-        message: 'Email/Player ID and password are required'
+        message: 'Email or Player ID and password are required'
       });
     }
 
@@ -145,9 +158,12 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    const ok = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
 
-    if (!ok) {
+    if (!passwordMatch) {
       return res.status(401).json({
         success: false,
         message: 'Invalid password'
@@ -158,16 +174,17 @@ router.post('/login', async (req, res) => {
 
     return res.json({
       success: true,
+      message: 'Login successful',
       token,
       user: publicUser(user)
     });
 
-  } catch (e) {
-    console.error('Login error:', e);
+  } catch (error) {
+    console.error('Login error:', error);
 
     return res.status(500).json({
       success: false,
-      message: e.message || 'Login failed'
+      message: error.message || 'Login failed'
     });
   }
 });
