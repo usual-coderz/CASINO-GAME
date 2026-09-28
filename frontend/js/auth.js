@@ -1,6 +1,5 @@
 const API_URL = 'https://casinogame-c34130ca80b6.herokuapp.com/api';
 
-// Generate unique casino-style ID
 function generateCasinoId() {
     const prefix = 'RV';
     const random = Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -8,26 +7,25 @@ function generateCasinoId() {
     return `${prefix}-${random}-${timestamp}`;
 }
 
-// Auth Modal Controller
 const authModal = {
     modal: document.getElementById('auth-modal'),
     loginForm: document.getElementById('login-form'),
     signupForm: document.getElementById('signup-form'),
-    
+
     open(tab = 'login') {
         this.modal.classList.add('active');
         this.switch(tab);
     },
-    
+
     close() {
         this.modal.classList.remove('active');
     },
-    
+
     switch(tab) {
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.tab === tab);
         });
-        
+
         if (tab === 'login') {
             this.loginForm.classList.remove('hidden');
             this.signupForm.classList.add('hidden');
@@ -38,10 +36,9 @@ const authModal = {
     }
 };
 
-// Signup Handler
 document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const data = {
         name: document.getElementById('signup-name').value,
         email: document.getElementById('signup-email').value,
@@ -50,16 +47,16 @@ document.getElementById('signup-form')?.addEventListener('submit', async (e) => 
         casinoName: document.getElementById('signup-casino-name').value,
         casinoId: generateCasinoId()
     };
-    
+
     try {
         const response = await fetch(`${API_URL}/auth/signup`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             localStorage.setItem('token', result.token);
             localStorage.setItem('user', JSON.stringify(result.user));
@@ -74,24 +71,23 @@ document.getElementById('signup-form')?.addEventListener('submit', async (e) => 
     }
 });
 
-// Login Handler
 document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const data = {
         email: document.getElementById('login-email').value,
         password: document.getElementById('login-password').value
     };
-    
+
     try {
         const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             localStorage.setItem('token', result.token);
             localStorage.setItem('user', JSON.stringify(result.user));
@@ -106,7 +102,6 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
     }
 });
 
-// Update UI for logged in user
 function updateUIForLoggedInUser(user) {
     document.getElementById('guest-view').classList.add('hidden');
     document.getElementById('user-view').classList.remove('hidden');
@@ -116,7 +111,6 @@ function updateUIForLoggedInUser(user) {
     updateWalletBalance(user.balance || 0);
 }
 
-// Logout
 function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -126,19 +120,16 @@ function logout() {
     showNotification('Logged out successfully', 'info');
 }
 
-// Toggle Profile Menu
 function toggleProfile() {
     document.getElementById('profile-menu').classList.toggle('active');
 }
 
-// Close profile menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.profile-dropdown')) {
         document.getElementById('profile-menu')?.classList.remove('active');
     }
 });
 
-// Check auth status on load
 function checkAuth() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
@@ -147,7 +138,6 @@ function checkAuth() {
     }
 }
 
-// Notification helper
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -164,10 +154,9 @@ function showNotification(message, type = 'info') {
         animation: slideIn 0.3s ease;
         background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--accent)' : '#333'};
     `;
-    
+
     document.body.appendChild(notification);
     setTimeout(() => notification.remove(), 3000);
 }
 
-// Initialize
 document.addEventListener('DOMContentLoaded', checkAuth);
