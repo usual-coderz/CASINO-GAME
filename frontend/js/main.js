@@ -1,4 +1,3 @@
-// Close modals on escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         authModal.close();
@@ -6,7 +5,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Close modals on backdrop click
 document.querySelectorAll('.modal').forEach(modal => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -15,7 +13,6 @@ document.querySelectorAll('.modal').forEach(modal => {
     });
 });
 
-// Smooth scroll for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -26,7 +23,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add animation styles
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideIn {
@@ -39,7 +35,7 @@ style.textContent = `
             opacity: 1;
         }
     }
-    
+
     .transaction-item {
         display: flex;
         justify-content: space-between;
@@ -47,26 +43,26 @@ style.textContent = `
         padding: 0.8rem;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    
+
     .tx-type {
         font-weight: 500;
         color: var(--gold);
     }
-    
+
     .tx-date {
         font-size: 0.8rem;
         color: var(--text-muted);
         display: block;
     }
-    
+
     .tx-amount {
         font-weight: 600;
     }
-    
+
     .tx-amount.credit {
         color: var(--success);
     }
-    
+
     .tx-amount.debit {
         color: var(--accent);
     }
