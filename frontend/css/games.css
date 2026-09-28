@@ -621,3 +621,162 @@
     align-items: flex-start;
   }
 }
+
+.mobile-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    position: relative;
+  }
+
+  .header-inner {
+    min-height: 68px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .desktop-nav.mobile-open {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 16px;
+    right: 16px;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    padding: 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: #fff;
+
+    box-shadow:
+      0 18px 45px rgba(0, 0, 0, .10),
+      0 4px 12px rgba(0, 0, 0, .04);
+  }
+
+  .desktop-nav.mobile-open a {
+    width: 100%;
+    padding: 12px 13px;
+    border-radius: 9px;
+  }
+
+  .desktop-nav.mobile-open a:hover,
+  .desktop-nav.mobile-open a.active {
+    background: var(--green-soft);
+    color: var(--green);
+  }
+
+  .header-actions {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .games-hero {
+    padding-top: 20px;
+  }
+
+  .games-breadcrumb {
+    font-size: 10px;
+  }
+
+  .games-hero-content {
+    padding-top: 42px;
+  }
+
+  .games-hero h1 {
+    font-size: 39px;
+    line-height: .98;
+    letter-spacing: -1.8px;
+  }
+
+  .games-hero p {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .games-section {
+    padding: 48px 0;
+  }
+
+  .game-tabs {
+    padding: 3px;
+    border-radius: 10px;
+  }
+
+  .game-tab {
+    font-size: 10px;
+    padding: 9px 5px;
+  }
+
+  .lobby-card {
+    border-radius: 17px;
+  }
+
+  .lobby-visual {
+    height: 210px;
+    padding: 15px;
+  }
+
+  .dice-box {
+    width: 85px;
+    height: 85px;
+    border-radius: 17px;
+  }
+
+  .dice-box span {
+    font-size: 38px;
+  }
+
+  .slot-symbols span {
+    width: 48px;
+    height: 58px;
+    font-size: 21px;
+  }
+
+  .lobby-body {
+    padding: 18px;
+  }
+
+  .lobby-title h2 {
+    font-size: 18px;
+  }
+
+  .lobby-body > p {
+    font-size: 10px;
+  }
+
+  .play-game-btn,
+  .notify-game-btn {
+    min-height: 42px;
+  }
+
+  .games-toast {
+    right: 15px;
+    bottom: 15px;
+    width: calc(100% - 30px);
+  }
+}
