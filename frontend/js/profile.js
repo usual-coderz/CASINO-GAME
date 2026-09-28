@@ -18,15 +18,23 @@ let toastTimer;
 
 function getUser() {
   try {
-    return JSON.parse(localStorage.getItem('user')) || null;
+    const data = localStorage.getItem('user');
+    return data ? JSON.parse(data) : null;
   } catch {
     return null;
   }
 }
 
 function showToast(title, message) {
-  toastTitle.textContent = title;
-  toastMessage.textContent = message;
+  if (!toast) return;
+
+  if (toastTitle) {
+    toastTitle.textContent = title;
+  }
+
+  if (toastMessage) {
+    toastMessage.textContent = message;
+  }
 
   toast.classList.add('show');
 
@@ -41,7 +49,15 @@ function loadProfile() {
   const user = getUser();
 
   if (!user) {
-    window.location.href = '/login.html';
+    profileName.textContent = 'Player';
+    profileId.textContent = 'KZ-XXXXXX';
+    detailName.textContent = '—';
+    detailEmail.textContent = '—';
+    detailPhone.textContent = '—';
+    detailPlayerName.textContent = '—';
+    detailPlayerId.textContent = '—';
+    profileBalance.textContent = '₹0.00';
+    avatar.textContent = 'P';
     return;
   }
 
@@ -52,9 +68,9 @@ function loadProfile() {
   profileId.textContent = playerId;
 
   detailName.textContent = name;
-  detailEmail.textContent = user.email || 'Not available';
-  detailPhone.textContent = user.phone || 'Not available';
-  detailPlayerName.textContent = user.casinoName || 'Not available';
+  detailEmail.textContent = user.email || '—';
+  detailPhone.textContent = user.phone || '—';
+  detailPlayerName.textContent = user.casinoName || '—';
   detailPlayerId.textContent = playerId;
 
   profileBalance.textContent =
@@ -106,11 +122,12 @@ document
     localStorage.removeItem('token');
     localStorage.removeItem('user');
 
-    window.location.href = '/login.html';
+    window.location.replace('/login.html');
   });
 
 toastClose?.addEventListener('click', () => {
-  toast.classList.remove('show');
+  toast?.classList.remove('show');
+  clearTimeout(toastTimer);
 });
 
 loadProfile();
