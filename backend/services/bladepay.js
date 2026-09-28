@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const BASE_URL = (process.env.BASE_URL || 'http://localhost:3000').replace(/\/+$/, '');
+const BASE_URL = (process.env.BASE_URL || 'https://casinogame-c34130ca80b6.herokuapp.com').replace(/\/+$/, '');
 const AUTH = () => ({
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${process.env.BLADEPAY_KEY}`
