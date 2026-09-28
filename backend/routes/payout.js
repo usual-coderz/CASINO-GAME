@@ -3,17 +3,16 @@ const router = express.Router();
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Transaction = require('../models/Transaction');
 
-const BLADEPAY_API = 'https://api.bladepay.pro/merchant/api/payout/create';
-const BLADEPAY_KEY = 'gw_8c2c7aed2861daf80574db85f5254c5ccaa85069dcaf9e6c8d81811316b71ef9';
+const BLADEPAY_API = process.env.BLADEPAY_PAYOUT_API || 'https://api.bladepay.pro/merchant/api/payout/create';
+const BLADEPAY_KEY = process.env.BLADEPAY_KEY;
 
-// Middleware
 const auth = (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     if (!token) return res.status(401).json({ success: false, message: 'Access denied' });
-    
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.userId = decoded.userId;
         next();
     } catch (error) {
@@ -21,71 +20,92 @@ const auth = (req, res, next) => {
     }
 };
 
-// Withdraw via UPI using BladePay
 router.post('/withdraw', auth, async (req, res) => {
     try {
         const { upiId, name, amount, phone } = req.body;
-        
-        // Get user
-        const user = await User.findById(req.userId);
-        
-        // Check balance
-        if (user.balance < amount) {
+        const value = Number(amount);
+
+        if (!upiId || !name || !value) {
+            return res.json({ success: false, message: 'Please fill all fields' });
+        }
+        if (value < 100) {
+            return res.json({ success: false, message: 'Minimum withdrawal is \u20b9100' });
+        }
+
+        const user = await User.findOneAndUpdate(
+            { _id: req.userId, balance: { $gte: value } },
+            { $inc: { balance: -value } },
+            { new: true }
+        );
+
+        if (!user) {
             return res.json({ success: false, message: 'Insufficient balance' });
         }
-        
-        // Generate unique order number
+
         const merchantOrderNo = `RV-WD-${Date.now()}`;
-        
-        // Call BladePay API
-        const response = await axios.post(BLADEPAY_API, {
-            merchantOrderNo: merchantOrderNo,
-            version: 'V3',
-            amount: amount.toFixed(2),
-            cashNumber: upiId,
-            cashName: name,
-            cashPhone: phone,
-            notifyUrl: `${process.env.BASE_URL || 'http://localhost:3000'}/api/payout/webhook`
-        }, {
-            headers: { 'Authorization': `Bearer ${BLADEPAY_KEY}` }
+
+        await Transaction.create({
+            userId: req.userId,
+            type: 'withdraw',
+            amount: value,
+            status: 'PENDING',
+            merchantOrderNo
         });
-        
-        if (response.data.code === 'SUCCESS') {
-            // Deduct balance
-            user.balance -= amount;
-            await user.save();
-            
-            res.json({
-                success: true,
-                message: 'Withdrawal initiated',
-                orderId: merchantOrderNo,
-                newBalance: user.balance
+
+        try {
+            const response = await axios.post(BLADEPAY_API, {
+                merchantOrderNo,
+                version: 'V3',
+                amount: value.toFixed(2),
+                cashNumber: upiId,
+                cashName: name,
+                cashPhone: phone,
+                notifyUrl: `${process.env.BASE_URL}/api/payout/webhook`
+            }, {
+                headers: { 'Authorization': `Bearer ${BLADEPAY_KEY}` }
             });
-        } else {
-            res.json({ 
-                success: false, 
-                message: response.data.msg || 'Payout failed' 
-            });
+
+            if (response.data.code === 'SUCCESS') {
+                return res.json({
+                    success: true,
+                    message: 'Withdrawal initiated',
+                    orderId: merchantOrderNo,
+                    newBalance: user.balance
+                });
+            }
+
+            await User.findByIdAndUpdate(req.userId, { $inc: { balance: value } });
+            await Transaction.updateOne({ merchantOrderNo }, { status: 'FAILED' });
+
+            return res.json({ success: false, message: response.data.msg || 'Payout failed' });
+        } catch (err) {
+            await User.findByIdAndUpdate(req.userId, { $inc: { balance: value } });
+            await Transaction.updateOne({ merchantOrderNo }, { status: 'FAILED' });
+            throw err;
         }
-        
     } catch (error) {
         console.error('Withdrawal error:', error.response?.data || error.message);
         res.json({ success: false, message: 'Withdrawal failed' });
     }
 });
 
-// Webhook for payout status updates
 router.post('/webhook', async (req, res) => {
     try {
-        const { merchantOrderNo, status, amount } = req.body;
-        
-        console.log('Payout webhook received:', { merchantOrderNo, status, amount });
-        
-        // Handle status updates
-        // SUCCESS - Payout completed
-        // FAILED - Payout failed (refund user)
-        // PENDING - Payout pending
-        
+        const { merchantOrderNo, status } = req.body;
+
+        const tx = await Transaction.findOne({ merchantOrderNo });
+        if (!tx || tx.status !== 'PENDING') {
+            return res.json({ success: true });
+        }
+
+        if (status === 'SUCCESS') {
+            tx.status = 'SUCCESS';
+        } else if (status === 'FAILED') {
+            tx.status = 'FAILED';
+            await User.findByIdAndUpdate(tx.userId, { $inc: { balance: tx.amount } });
+        }
+
+        await tx.save();
         res.json({ success: true });
     } catch (error) {
         console.error('Webhook error:', error);
