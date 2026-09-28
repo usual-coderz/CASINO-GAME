@@ -1,12 +1,13 @@
 {
-  "name": "royal-vegas-casino",
+  "name": "royal-vegas",
   "version": "1.0.0",
-  "description": "Royal Vegas Casino with BladePay Integration",
+  "description": "Royal Vegas Casino - BladePay integrated",
   "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js"
   },
+  "engines": { "node": "20.x" },
   "dependencies": {
     "axios": "^1.6.0",
     "bcryptjs": "^2.4.3",
@@ -16,7 +17,5 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "devDependencies": { "nodemon": "^3.0.1" }
 }
