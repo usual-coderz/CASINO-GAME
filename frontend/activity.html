@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity — Khelza</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/activity.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="activity-page">
+
+  <header class="activity-header">
+
+    <a href="/wallet.html" class="back-button">
+      <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <div class="header-title">
+      <span>ACCOUNT</span>
+      <h1>Activity</h1>
+    </div>
+
+    <button class="header-icon" id="filter-button">
+      <i class="fa-solid fa-sliders"></i>
+    </button>
+
+  </header>
+
+  <main class="activity-container">
+
+    <section class="activity-summary">
+
+      <div class="summary-item">
+        <span>Total activity</span>
+        <strong id="activity-count">0</strong>
+      </div>
+
+      <div class="summary-divider"></div>
+
+      <div class="summary-item">
+        <span>Current balance</span>
+        <strong id="current-balance">₹0.00</strong>
+      </div>
+
+    </section>
+
+    <section class="filter-tabs">
+
+      <button class="filter-tab active" data-filter="all">
+        All
+      </button>
+
+      <button class="filter-tab" data-filter="deposit">
+        Deposits
+      </button>
+
+      <button class="filter-tab" data-filter="withdraw">
+        Withdrawals
+      </button>
+
+      <button class="filter-tab" data-filter="game">
+        Games
+      </button>
+
+    </section>
+
+    <section class="activity-card">
+
+      <div class="section-heading">
+        <div>
+          <span>HISTORY</span>
+          <h2>Recent activity</h2>
+        </div>
+
+        <button class="clear-button" id="clear-button">
+          Clear
+        </button>
+      </div>
+
+      <div id="activity-list" class="activity-list">
+
+        <div class="empty-state" id="empty-state">
+
+          <div class="empty-icon">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+
+          <h3>No activity yet</h3>
+
+          <p>
+            Your account activity will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="activity-info">
+
+      <div class="info-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div>
+        <strong>Activity history</strong>
+        <p>
+          Your account activity is displayed here for reference.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+
+    <a href="/" class="nav-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+
+    <a href="/games.html" class="nav-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Games</span>
+    </a>
+
+    <a href="/wallet.html" class="nav-item">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
+
+    <a href="/activity.html" class="nav-item active">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <span>Activity</span>
+    </a>
+
+    <a href="/profile.html" class="nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </a>
+
+  </nav>
+
+  <div class="activity-toast" id="activity-toast">
+
+    <div class="toast-icon">
+      <i class="fa-solid fa-circle-info"></i>
+    </div>
+
+    <div class="toast-content">
+      <strong id="toast-title">Notice</strong>
+      <span id="toast-message">Something happened.</span>
+    </div>
+
+    <button id="toast-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+  <script src="/js/activity.js"></script>
+
+</body>
+</html>
