@@ -1,3 +1,6 @@
+const mobileMenuButton = document.getElementById('mobile-menu-btn');
+const mobileNav = document.getElementById('site-nav');
+
 const toast = document.getElementById('scheme-toast');
 const toastTitle = document.getElementById('toast-title');
 const toastMessage = document.getElementById('toast-message');
@@ -5,9 +8,84 @@ const toastClose = document.getElementById('toast-close');
 
 let toastTimer;
 
-function showSchemeToast(title, message) {
-  toastTitle.textContent = title;
-  toastMessage.textContent = message;
+function openMenu() {
+  if (!mobileNav || !mobileMenuButton) return;
+
+  mobileNav.classList.add('mobile-open');
+
+  mobileMenuButton.setAttribute('aria-expanded', 'true');
+  mobileMenuButton.setAttribute('aria-label', 'Close menu');
+
+  const icon = mobileMenuButton.querySelector('i');
+
+  if (icon) {
+    icon.className = 'fa-solid fa-xmark';
+  }
+}
+
+function closeMenu() {
+  if (!mobileNav || !mobileMenuButton) return;
+
+  mobileNav.classList.remove('mobile-open');
+
+  mobileMenuButton.setAttribute('aria-expanded', 'false');
+  mobileMenuButton.setAttribute('aria-label', 'Open menu');
+
+  const icon = mobileMenuButton.querySelector('i');
+
+  if (icon) {
+    icon.className = 'fa-solid fa-bars';
+  }
+}
+
+mobileMenuButton?.addEventListener('click', () => {
+  const isOpen = mobileNav?.classList.contains('mobile-open');
+
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+});
+
+mobileNav?.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
+  });
+});
+
+document.addEventListener('click', event => {
+  if (!mobileNav || !mobileMenuButton) return;
+
+  if (!mobileNav.classList.contains('mobile-open')) return;
+
+  if (
+    mobileNav.contains(event.target) ||
+    mobileMenuButton.contains(event.target)
+  ) {
+    return;
+  }
+
+  closeMenu();
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    closeMenu();
+  }
+});
+
+
+function showToast(title, message) {
+  if (!toast) return;
+
+  if (toastTitle) {
+    toastTitle.textContent = title;
+  }
+
+  if (toastMessage) {
+    toastMessage.textContent = message;
+  }
 
   toast.classList.add('show');
 
@@ -18,52 +96,20 @@ function showSchemeToast(title, message) {
   }, 3500);
 }
 
+
 toastClose?.addEventListener('click', () => {
-  toast.classList.remove('show');
+  toast?.classList.remove('show');
+  clearTimeout(toastTimer);
 });
+
 
 document.querySelectorAll('.scheme-action').forEach(button => {
   button.addEventListener('click', () => {
-    const action = button.dataset.action;
+    const title = button.dataset.title || 'Khelza';
+    const message =
+      button.dataset.message ||
+      'Thanks for checking the Khelza offers.';
 
-    if (action === 'featured') {
-      showSchemeToast(
-        'Featured offer',
-        'Offer details will appear here when published.'
-      );
-      return;
-    }
-
-    if (action === 'coming') {
-      showSchemeToast(
-        'Coming soon',
-        'New promotions will be announced here.'
-      );
-      return;
-    }
-
-    if (action === 'updates') {
-      showSchemeToast(
-        'Khelza updates',
-        'Check back regularly for the latest announcements.'
-      );
-      return;
-    }
-
-    if (action === 'soon') {
-      showSchemeToast(
-        'You are all set',
-        'New promotions will appear on this page.'
-      );
-    }
+    showToast(title, message);
   });
-});
-
-
-document.querySelector('.mobile-menu-btn')?.addEventListener('click', () => {
-  const nav = document.querySelector('.desktop-nav');
-
-  if (!nav) return;
-
-  nav.classList.toggle('mobile-open');
 });
