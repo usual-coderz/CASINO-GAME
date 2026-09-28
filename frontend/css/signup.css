@@ -1,0 +1,148 @@
+.signup-container {
+  max-width: 500px;
+}
+
+.signup-main {
+  padding-top: 40px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 5px;
+  color: #9aa19d;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.player-id-row {
+  display: flex;
+  gap: 8px;
+}
+
+.player-id-row .input-wrap {
+  flex: 1;
+}
+
+.generate-id-btn {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 1px solid #dfe5e1;
+  border-radius: 10px;
+  background: #fbfcfb;
+  color: var(--green);
+}
+
+.generate-id-btn:hover {
+  border-color: var(--green);
+  background: var(--green-soft);
+}
+
+.password-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 3px;
+}
+
+.strength-bars span {
+  width: 25px;
+  height: 3px;
+  border-radius: 3px;
+  background: #e4e8e5;
+}
+
+.password-strength small {
+  color: #9aa19d;
+  font-size: 8px;
+}
+
+.password-strength.weak .strength-bars span:nth-child(1) {
+  background: #ef4444;
+}
+
+.password-strength.medium .strength-bars span:nth-child(-n+2) {
+  background: #f59e0b;
+}
+
+.password-strength.good .strength-bars span:nth-child(-n+3) {
+  background: #84cc16;
+}
+
+.password-strength.strong .strength-bars span {
+  background: var(--green);
+}
+
+.terms-check {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #7d8580;
+  font-size: 9px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.terms-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d6ddd8;
+  border-radius: 4px;
+  background: white;
+  color: white;
+  font-size: 8px;
+  transition: .15s ease;
+}
+
+.terms-check input:checked + .custom-checkbox {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.terms-check a {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.terms-error {
+  margin-left: 25px;
+}
+
+
+@media (max-width: 600px) {
+
+  .signup-main {
+    padding-top: 25px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form-row .form-group + .form-group {
+    margin-top: 19px;
+  }
+}
