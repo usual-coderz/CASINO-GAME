@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Payment</title>
+<link rel="stylesheet" href="/css/style.css"></head>
+<body class="center-page">
+  <div class="card">
+    <h2>Payment received ✅</h2>
+    <p>Balance verify ho raha hai...</p>
+    <div id="status">Verifying...</div>
+    <a class="btn btn-primary" href="/">Back to Casino</a>
+  </div>
+<script src="/js/api.js"></script>
+<script>
+  async function poll(n = 0) {
+    await fetchWalletBalance?.();
+    const r = await apiFetch('/wallet/balance');
+    document.getElementById('status').textContent = r.success
+      ? `Current balance: ₹${r.balance.toFixed(2)}`
+      : 'Login karke balance dekho';
+    if (n < 5 && r.success && r.balance === 0) setTimeout(() => poll(n + 1), 3000);
+  }
+  poll();
+</script>
+</body></html>
