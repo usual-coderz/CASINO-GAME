@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050807">
+
+  <title>Wallet — Khelza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/wallet.css">
+</head>
+
+<body class="wallet-page">
+
+  <header class="wallet-header">
+
+    <div class="wallet-header-inner">
+
+      <a href="/" class="wallet-brand">
+        <span class="wallet-brand-mark">K</span>
+
+        <span class="wallet-brand-text">
+          <strong>KHELZA</strong>
+          <small>WALLET</small>
+        </span>
+      </a>
+
+      <div class="wallet-header-actions">
+
+        <button
+          type="button"
+          class="wallet-icon-btn"
+          id="wallet-notification"
+          aria-label="Notifications"
+        >
+          <i class="fa-regular fa-bell"></i>
+          <span></span>
+        </button>
+
+        <a
+          href="/login.html"
+          class="wallet-profile-btn"
+          aria-label="Profile"
+        >
+          <i class="fa-regular fa-user"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main class="wallet-shell">
+
+    <section class="wallet-profile-card">
+
+      <div class="profile-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <div class="profile-details">
+
+        <span class="profile-label">PLAYER ACCOUNT</span>
+
+        <strong id="wallet-player-name">
+          Guest Player
+        </strong>
+
+        <span id="wallet-player-id">
+          KZ-XXXXXX
+        </span>
+
+      </div>
+
+      <button
+        type="button"
+        class="profile-menu"
+        id="profile-menu"
+        aria-label="Profile options"
+      >
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+      </button>
+
+    </section>
+
+
+    <section class="balance-card">
+
+      <div class="balance-top">
+
+        <span>AVAILABLE BALANCE</span>
+
+        <button
+          type="button"
+          id="toggle-balance"
+          aria-label="Hide balance"
+        >
+          <i class="fa-regular fa-eye"></i>
+        </button>
+
+      </div>
+
+      <div class="balance-value" id="balance-value">
+        ₹0.00
+      </div>
+
+      <div class="balance-footer">
+
+        <span>
+          <i class="fa-solid fa-shield-halved"></i>
+          Wallet balance
+        </span>
+
+        <span id="balance-status">
+          Active
+        </span>
+
+      </div>
+
+      <div class="balance-glow"></div>
+      <div class="balance-orb"></div>
+
+    </section>
+
+
+    <section class="wallet-actions">
+
+      <button
+        type="button"
+        class="wallet-action wallet-action-primary"
+        data-action="deposit"
+      >
+        <span class="action-icon">
+          <i class="fa-solid fa-arrow-down"></i>
+        </span>
+
+        <span>
+          <strong>Deposit</strong>
+          <small>Add funds</small>
+        </span>
+      </button>
+
+
+      <button
+        type="button"
+        class="wallet-action"
+        data-action="withdraw"
+      >
+        <span class="action-icon">
+          <i class="fa-solid fa-arrow-up"></i>
+        </span>
+
+        <span>
+          <strong>Withdraw</strong>
+          <small>Coming soon</small>
+        </span>
+      </button>
+
+    </section>
+
+
+    <section class="wallet-shortcuts">
+
+      <button type="button" class="shortcut-card" data-action="history">
+
+        <span class="shortcut-icon">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </span>
+
+        <span>
+          <strong>History</strong>
+          <small>Transactions</small>
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </button>
+
+
+      <button type="button" class="shortcut-card" data-action="support">
+
+        <span class="shortcut-icon">
+          <i class="fa-solid fa-headset"></i>
+        </span>
+
+        <span>
+          <strong>Support</strong>
+          <small>Get help</small>
+        </span>
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+      </button>
+
+    </section>
+
+
+    <section class="activity-section">
+
+      <div class="activity-heading">
+
+        <div>
+          <span>ACCOUNT ACTIVITY</span>
+          <h2>Recent activity</h2>
+        </div>
+
+        <button type="button" id="view-history">
+          View all
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+      </div>
+
+
+      <div class="activity-list" id="activity-list">
+
+        <div class="empty-activity">
+
+          <div class="empty-icon">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+
+          <strong>No transactions yet</strong>
+
+          <span>
+            Your wallet activity will appear here.
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="wallet-security">
+
+      <div class="security-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div>
+        <strong>Wallet security</strong>
+
+        <span>
+          Keep your login details private and never share your password.
+        </span>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <nav class="wallet-bottom-nav">
+
+    <a href="/" class="wallet-nav-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+
+    <a href="/games.html" class="wallet-nav-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Games</span>
+    </a>
+
+    <a href="/wallet.html" class="wallet-nav-item active">
+      <i class="fa-solid fa-wallet"></i>
+      <span>Wallet</span>
+    </a>
+
+    <a href="#" class="wallet-nav-item" id="activity-nav">
+      <i class="fa-solid fa-chart-column"></i>
+      <span>Activity</span>
+    </a>
+
+    <a href="/login.html" class="wallet-nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span>Profile</span>
+    </a>
+
+  </nav>
+
+
+  <div class="wallet-toast" id="wallet-toast">
+
+    <div class="wallet-toast-icon">
+      <i class="fa-solid fa-circle-info"></i>
+    </div>
+
+    <div class="wallet-toast-content">
+
+      <strong id="wallet-toast-title">
+        Khelza
+      </strong>
+
+      <span id="wallet-toast-message">
+        Coming soon.
+      </span>
+
+    </div>
+
+    <button
+      type="button"
+      id="wallet-toast-close"
+      aria-label="Close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+
+  <script src="/js/wallet.js"></script>
+
+</body>
+</html>
