@@ -22,6 +22,7 @@
 
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/signup.css">
 </head>
 
 <body class="auth-page">
@@ -41,7 +42,6 @@
 
     </div>
   </header>
-
 
   <main class="auth-main signup-main">
 
@@ -68,19 +68,15 @@
 
         </div>
 
-
         <form id="signup-form" class="auth-form" novalidate>
 
           <div class="form-row">
 
             <div class="form-group">
 
-              <label for="name">
-                Full name
-              </label>
+              <label for="name">Full name</label>
 
               <div class="input-wrap">
-
                 <i class="fa-regular fa-user"></i>
 
                 <input
@@ -92,22 +88,17 @@
                   maxlength="60"
                   required
                 >
-
               </div>
 
               <small class="field-error" id="name-error"></small>
 
             </div>
 
-
             <div class="form-group">
 
-              <label for="phone">
-                Phone number
-              </label>
+              <label for="phone">Phone number</label>
 
               <div class="input-wrap">
-
                 <i class="fa-solid fa-phone"></i>
 
                 <input
@@ -117,9 +108,9 @@
                   placeholder="Phone number"
                   autocomplete="tel"
                   maxlength="15"
+                  inputmode="tel"
                   required
                 >
-
               </div>
 
               <small class="field-error" id="phone-error"></small>
@@ -128,15 +119,11 @@
 
           </div>
 
-
           <div class="form-group">
 
-            <label for="email">
-              Email address
-            </label>
+            <label for="email">Email address</label>
 
             <div class="input-wrap">
-
               <i class="fa-regular fa-envelope"></i>
 
               <input
@@ -148,22 +135,17 @@
                 maxlength="100"
                 required
               >
-
             </div>
 
             <small class="field-error" id="email-error"></small>
 
           </div>
 
-
           <div class="form-group">
 
-            <label for="casino-name">
-              Player name
-            </label>
+            <label for="casino-name">Player name</label>
 
             <div class="input-wrap">
-
               <i class="fa-solid fa-at"></i>
 
               <input
@@ -175,7 +157,6 @@
                 maxlength="30"
                 required
               >
-
             </div>
 
             <small class="field-hint">
@@ -186,17 +167,13 @@
 
           </div>
 
-
           <div class="form-group">
 
-            <label for="casino-id">
-              Player ID
-            </label>
+            <label for="casino-id">Player ID</label>
 
             <div class="player-id-row">
 
               <div class="input-wrap">
-
                 <i class="fa-solid fa-fingerprint"></i>
 
                 <input
@@ -208,7 +185,6 @@
                   maxlength="20"
                   required
                 >
-
               </div>
 
               <button
@@ -216,6 +192,7 @@
                 class="generate-id-btn"
                 id="generate-id"
                 title="Generate Player ID"
+                aria-label="Generate Player ID"
               >
                 <i class="fa-solid fa-rotate"></i>
               </button>
@@ -230,12 +207,9 @@
 
           </div>
 
-
           <div class="form-group">
 
-            <label for="password">
-              Password
-            </label>
+            <label for="password">Password</label>
 
             <div class="input-wrap">
 
@@ -263,6 +237,7 @@
             </div>
 
             <div class="password-strength">
+
               <div class="strength-bars">
                 <span></span>
                 <span></span>
@@ -273,12 +248,12 @@
               <small id="strength-text">
                 Use 6 or more characters
               </small>
+
             </div>
 
             <small class="field-error" id="password-error"></small>
 
           </div>
-
 
           <label class="terms-check">
 
@@ -303,7 +278,6 @@
 
           <small class="field-error terms-error" id="terms-error"></small>
 
-
           <button
             type="submit"
             class="auth-submit"
@@ -325,11 +299,9 @@
 
         </form>
 
-
         <div class="auth-divider">
           <span>OR</span>
         </div>
-
 
         <div class="auth-register">
 
@@ -341,7 +313,6 @@
           </a>
 
         </div>
-
 
         <div class="auth-security">
 
@@ -355,7 +326,6 @@
 
       </div>
 
-
       <div class="auth-back">
 
         <a href="/">
@@ -368,7 +338,6 @@
     </section>
 
   </main>
-
 
   <div class="auth-toast" id="auth-toast">
 
@@ -388,12 +357,15 @@
 
     </div>
 
-    <button type="button" id="toast-close">
+    <button
+      type="button"
+      id="toast-close"
+      aria-label="Close notification"
+    >
       <i class="fa-solid fa-xmark"></i>
     </button>
 
   </div>
-
 
   <script src="/js/api.js"></script>
   <script src="/js/signup.js"></script>
