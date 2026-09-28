@@ -27,18 +27,32 @@ function loadUser() {
     return;
   }
 
-  playerName.textContent = user.name || 'Player';
-  playerId.textContent = user.casinoId || 'KZ-XXXXXX';
+  if (playerName) {
+    playerName.textContent = user.name || 'Player';
+  }
+
+  if (playerId) {
+    playerId.textContent = user.casinoId || 'KZ-XXXXXX';
+  }
 
   const balance = Number(user.balance || 0);
 
-  balanceValue.dataset.balance = balance.toFixed(2);
-  balanceValue.textContent = `₹${balance.toFixed(2)}`;
+  if (balanceValue) {
+    balanceValue.dataset.balance = balance.toFixed(2);
+    balanceValue.textContent = `₹${balance.toFixed(2)}`;
+  }
 }
 
 function showToast(title, message) {
-  toastTitle.textContent = title;
-  toastMessage.textContent = message;
+  if (!toast) return;
+
+  if (toastTitle) {
+    toastTitle.textContent = title;
+  }
+
+  if (toastMessage) {
+    toastMessage.textContent = message;
+  }
 
   toast.classList.add('show');
 
@@ -50,28 +64,34 @@ function showToast(title, message) {
 }
 
 function updateBalanceVisibility() {
+  if (!balanceValue) return;
+
   const balance = balanceValue.dataset.balance || '0.00';
 
   if (balanceVisible) {
     balanceValue.textContent = `₹${balance}`;
 
-    toggleBalance.innerHTML =
-      '<i class="fa-regular fa-eye"></i>';
+    if (toggleBalance) {
+      toggleBalance.innerHTML =
+        '<i class="fa-regular fa-eye"></i>';
 
-    toggleBalance.setAttribute(
-      'aria-label',
-      'Hide balance'
-    );
+      toggleBalance.setAttribute(
+        'aria-label',
+        'Hide balance'
+      );
+    }
   } else {
     balanceValue.textContent = '₹••••••';
 
-    toggleBalance.innerHTML =
-      '<i class="fa-regular fa-eye-slash"></i>';
+    if (toggleBalance) {
+      toggleBalance.innerHTML =
+        '<i class="fa-regular fa-eye-slash"></i>';
 
-    toggleBalance.setAttribute(
-      'aria-label',
-      'Show balance'
-    );
+      toggleBalance.setAttribute(
+        'aria-label',
+        'Show balance'
+      );
+    }
   }
 }
 
@@ -81,7 +101,8 @@ toggleBalance?.addEventListener('click', () => {
 });
 
 toastClose?.addEventListener('click', () => {
-  toast.classList.remove('show');
+  toast?.classList.remove('show');
+  clearTimeout(toastTimer);
 });
 
 document
@@ -91,18 +112,12 @@ document
       const action = button.dataset.action;
 
       if (action === 'deposit') {
-        showToast(
-          'Deposit',
-          'Wallet funding is available in the full account flow.'
-        );
+        window.location.href = '/deposit.html';
         return;
       }
 
       if (action === 'withdraw') {
-        showToast(
-          'Coming soon',
-          'Withdraw functionality is not available yet.'
-        );
+        window.location.href = '/withdraw.html';
       }
     });
   });
@@ -114,10 +129,7 @@ document
       const action = button.dataset.action;
 
       if (action === 'history') {
-        showToast(
-          'Transaction history',
-          'Your activity history will appear here.'
-        );
+        window.location.href = '/activity.html';
         return;
       }
 
@@ -130,23 +142,18 @@ document
     });
   });
 
-document.getElementById('view-history')?.addEventListener('click', () => {
-  showToast(
-    'Transaction history',
-    'There are no transactions to display.'
-  );
-});
+document
+  .getElementById('view-history')
+  ?.addEventListener('click', () => {
+    window.location.href = '/activity.html';
+  });
 
-document.getElementById('activity-nav')?.addEventListener('click', event => {
-  event.preventDefault();
-
-  document
-    .querySelector('.activity-section')
-    ?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
-});
+document
+  .getElementById('activity-nav')
+  ?.addEventListener('click', event => {
+    event.preventDefault();
+    window.location.href = '/activity.html';
+  });
 
 document
   .getElementById('wallet-notification')
@@ -159,11 +166,11 @@ document
 
 document
   .getElementById('profile-menu')
-  ?.addEventListener('click', () => {
-    showToast(
-      'Profile',
-      'Profile settings will be available soon.'
-    );
+  ?.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    window.location.href = '/profile.html';
   });
 
 loadUser();
