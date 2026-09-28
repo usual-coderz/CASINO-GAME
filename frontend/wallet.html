@@ -27,7 +27,6 @@
 <body class="wallet-page">
 
   <header class="wallet-header">
-
     <div class="wallet-header-inner">
 
       <a href="/" class="wallet-brand">
@@ -52,7 +51,7 @@
         </button>
 
         <a
-          href="/login.html"
+          href="/profile.html"
           class="wallet-profile-btn"
           aria-label="Profile"
         >
@@ -62,9 +61,7 @@
       </div>
 
     </div>
-
   </header>
-
 
   <main class="wallet-shell">
 
@@ -75,7 +72,6 @@
       </div>
 
       <div class="profile-details">
-
         <span class="profile-label">PLAYER ACCOUNT</span>
 
         <strong id="wallet-player-name">
@@ -85,25 +81,22 @@
         <span id="wallet-player-id">
           KZ-XXXXXX
         </span>
-
       </div>
 
       <button
         type="button"
         class="profile-menu"
         id="profile-menu"
-        aria-label="Profile options"
+        aria-label="Open profile"
       >
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </button>
 
     </section>
 
-
     <section class="balance-card">
 
       <div class="balance-top">
-
         <span>AVAILABLE BALANCE</span>
 
         <button
@@ -113,7 +106,6 @@
         >
           <i class="fa-regular fa-eye"></i>
         </button>
-
       </div>
 
       <div class="balance-value" id="balance-value">
@@ -138,7 +130,6 @@
 
     </section>
 
-
     <section class="wallet-actions">
 
       <button
@@ -155,7 +146,6 @@
           <small>Add funds</small>
         </span>
       </button>
-
 
       <button
         type="button"
@@ -174,11 +164,13 @@
 
     </section>
 
-
     <section class="wallet-shortcuts">
 
-      <button type="button" class="shortcut-card" data-action="history">
-
+      <button
+        type="button"
+        class="shortcut-card"
+        data-action="history"
+      >
         <span class="shortcut-icon">
           <i class="fa-solid fa-clock-rotate-left"></i>
         </span>
@@ -189,12 +181,13 @@
         </span>
 
         <i class="fa-solid fa-chevron-right"></i>
-
       </button>
 
-
-      <button type="button" class="shortcut-card" data-action="support">
-
+      <button
+        type="button"
+        class="shortcut-card"
+        data-action="support"
+      >
         <span class="shortcut-icon">
           <i class="fa-solid fa-headset"></i>
         </span>
@@ -205,11 +198,9 @@
         </span>
 
         <i class="fa-solid fa-chevron-right"></i>
-
       </button>
 
     </section>
-
 
     <section class="activity-section">
 
@@ -226,7 +217,6 @@
         </button>
 
       </div>
-
 
       <div class="activity-list" id="activity-list">
 
@@ -248,7 +238,6 @@
 
     </section>
 
-
     <section class="wallet-security">
 
       <div class="security-icon">
@@ -267,7 +256,6 @@
 
   </main>
 
-
   <nav class="wallet-bottom-nav">
 
     <a href="/" class="wallet-nav-item">
@@ -285,18 +273,24 @@
       <span>Wallet</span>
     </a>
 
-    <a href="#" class="wallet-nav-item" id="activity-nav">
+    <a
+      href="/activity.html"
+      class="wallet-nav-item"
+      id="activity-nav"
+    >
       <i class="fa-solid fa-chart-column"></i>
       <span>Activity</span>
     </a>
 
-    <a href="/login.html" class="wallet-nav-item">
+    <a
+      href="/profile.html"
+      class="wallet-nav-item"
+    >
       <i class="fa-solid fa-user"></i>
       <span>Profile</span>
     </a>
 
   </nav>
-
 
   <div class="wallet-toast" id="wallet-toast">
 
@@ -325,7 +319,6 @@
     </button>
 
   </div>
-
 
   <script src="/js/wallet.js"></script>
 
