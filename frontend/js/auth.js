@@ -1,4 +1,4 @@
-const API_URL = 'https://casinogame-c34130ca80b6.herokuapp.com/api';
+const API_URL = 'http://localhost:3000/api';
 
 // Generate unique casino-style ID
 function generateCasinoId() {
