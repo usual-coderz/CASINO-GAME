@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Create Account — Khelza</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body class="auth-page">
+
+  <header class="site-header auth-header">
+    <div class="container header-inner">
+
+      <a href="/" class="logo">
+        <span class="logo-mark">K</span>
+        <span class="logo-name">Khelza</span>
+      </a>
+
+      <a href="/login.html" class="auth-header-link">
+        Already have an account?
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+
+    </div>
+  </header>
+
+
+  <main class="auth-main signup-main">
+
+    <div class="auth-decoration auth-decoration-one"></div>
+    <div class="auth-decoration auth-decoration-two"></div>
+
+    <section class="auth-container signup-container">
+
+      <div class="auth-card">
+
+        <div class="auth-heading">
+
+          <div class="auth-icon">
+            <i class="fa-solid fa-user-plus"></i>
+          </div>
+
+          <span class="auth-eyebrow">GET STARTED</span>
+
+          <h1>Create your account</h1>
+
+          <p>
+            Set up your Khelza account in a few simple steps.
+          </p>
+
+        </div>
+
+
+        <form id="signup-form" class="auth-form" novalidate>
+
+          <div class="form-row">
+
+            <div class="form-group">
+
+              <label for="name">
+                Full name
+              </label>
+
+              <div class="input-wrap">
+
+                <i class="fa-regular fa-user"></i>
+
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  maxlength="60"
+                  required
+                >
+
+              </div>
+
+              <small class="field-error" id="name-error"></small>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="phone">
+                Phone number
+              </label>
+
+              <div class="input-wrap">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone number"
+                  autocomplete="tel"
+                  maxlength="15"
+                  required
+                >
+
+              </div>
+
+              <small class="field-error" id="phone-error"></small>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="email">
+              Email address
+            </label>
+
+            <div class="input-wrap">
+
+              <i class="fa-regular fa-envelope"></i>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                maxlength="100"
+                required
+              >
+
+            </div>
+
+            <small class="field-error" id="email-error"></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="casino-name">
+              Player name
+            </label>
+
+            <div class="input-wrap">
+
+              <i class="fa-solid fa-at"></i>
+
+              <input
+                type="text"
+                id="casino-name"
+                name="casinoName"
+                placeholder="Choose your player name"
+                autocomplete="off"
+                maxlength="30"
+                required
+              >
+
+            </div>
+
+            <small class="field-hint">
+              This name will be associated with your Khelza profile.
+            </small>
+
+            <small class="field-error" id="casino-name-error"></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="casino-id">
+              Player ID
+            </label>
+
+            <div class="player-id-row">
+
+              <div class="input-wrap">
+
+                <i class="fa-solid fa-fingerprint"></i>
+
+                <input
+                  type="text"
+                  id="casino-id"
+                  name="casinoId"
+                  placeholder="KZ-XXXXXX"
+                  autocomplete="off"
+                  maxlength="20"
+                  required
+                >
+
+              </div>
+
+              <button
+                type="button"
+                class="generate-id-btn"
+                id="generate-id"
+                title="Generate Player ID"
+              >
+                <i class="fa-solid fa-rotate"></i>
+              </button>
+
+            </div>
+
+            <small class="field-hint">
+              Your unique Player ID.
+            </small>
+
+            <small class="field-error" id="casino-id-error"></small>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="input-wrap">
+
+              <i class="fa-solid fa-lock"></i>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Minimum 6 characters"
+                autocomplete="new-password"
+                maxlength="100"
+                required
+              >
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="password-toggle"
+                aria-label="Show password"
+              >
+                <i class="fa-regular fa-eye"></i>
+              </button>
+
+            </div>
+
+            <div class="password-strength">
+              <div class="strength-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <small id="strength-text">
+                Use 6 or more characters
+              </small>
+            </div>
+
+            <small class="field-error" id="password-error"></small>
+
+          </div>
+
+
+          <label class="terms-check">
+
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+            >
+
+            <span class="custom-checkbox">
+              <i class="fa-solid fa-check"></i>
+            </span>
+
+            <span>
+              I agree to the Khelza
+              <a href="#" onclick="return false;">Terms</a>
+              and
+              <a href="#" onclick="return false;">Privacy Policy</a>.
+            </span>
+
+          </label>
+
+          <small class="field-error terms-error" id="terms-error"></small>
+
+
+          <button
+            type="submit"
+            class="auth-submit"
+            id="signup-submit"
+          >
+
+            <span class="submit-text">
+              Create account
+            </span>
+
+            <span class="submit-loading">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+              Creating account...
+            </span>
+
+            <i class="fa-solid fa-arrow-right submit-arrow"></i>
+
+          </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+          <span>OR</span>
+        </div>
+
+
+        <div class="auth-register">
+
+          <span>Already have an account?</span>
+
+          <a href="/login.html">
+            Sign in
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+
+        </div>
+
+
+        <div class="auth-security">
+
+          <i class="fa-solid fa-shield-halved"></i>
+
+          <span>
+            Your account information is securely handled.
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="auth-back">
+
+        <a href="/">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Khelza
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <div class="auth-toast" id="auth-toast">
+
+    <div class="auth-toast-icon">
+      <i class="fa-solid fa-circle-check" id="toast-icon"></i>
+    </div>
+
+    <div class="auth-toast-content">
+
+      <strong id="toast-title">
+        Message
+      </strong>
+
+      <p id="toast-message">
+        Something happened.
+      </p>
+
+    </div>
+
+    <button type="button" id="toast-close">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+
+  <script src="/js/api.js"></script>
+  <script src="/js/signup.js"></script>
+
+</body>
+</html>
