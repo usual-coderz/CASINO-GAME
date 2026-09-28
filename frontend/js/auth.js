@@ -1,5 +1,9 @@
 function generateCasinoId() {
-  const random = crypto.randomUUID().replace(/-/g, '').substring(0, 8).toUpperCase();
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return `RV-${window.crypto.randomUUID().replace(/-/g, '').substring(0, 8).toUpperCase()}`;
+  }
+
+  const random = Math.random().toString(36).substring(2, 10).toUpperCase();
   return `RV-${random}`;
 }
 
@@ -7,12 +11,12 @@ const authModal = {
   modal: document.getElementById('auth-modal'),
 
   open(tab = 'login') {
-    this.modal.classList.add('active');
+    this.modal?.classList.add('active');
     this.switch(tab);
   },
 
   close() {
-    this.modal.classList.remove('active');
+    this.modal?.classList.remove('active');
   },
 
   switch(tab) {
@@ -20,76 +24,62 @@ const authModal = {
       button.classList.toggle('active', button.dataset.tab === tab);
     });
 
-    document
-      .getElementById('login-form')
-      .classList.toggle('hidden', tab !== 'login');
-
-    document
-      .getElementById('signup-form')
-      .classList.toggle('hidden', tab !== 'signup');
+    document.getElementById('login-form')?.classList.toggle('hidden', tab !== 'login');
+    document.getElementById('signup-form')?.classList.toggle('hidden', tab !== 'signup');
   }
 };
 
-document.getElementById('signup-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
+document.getElementById('signup-form')?.addEventListener('submit', async event => {
+  event.preventDefault();
 
-  const name = document.getElementById('signup-name').value.trim();
-  const email = document.getElementById('signup-email').value.trim().toLowerCase();
-  const phone = document.getElementById('signup-phone').value.trim();
-  const password = document.getElementById('signup-password').value;
-  const casinoName = document.getElementById('signup-casino-name').value.trim();
+  const data = {
+    name: document.getElementById('signup-name').value.trim(),
+    email: document.getElementById('signup-email').value.trim().toLowerCase(),
+    phone: document.getElementById('signup-phone').value.trim(),
+    password: document.getElementById('signup-password').value,
+    casinoName: document.getElementById('signup-casino-name').value.trim(),
+    casinoId: generateCasinoId()
+  };
 
-  if (!name || !email || !phone || !password || !casinoName) {
+  if (!data.name || !data.email || !data.phone || !data.password || !data.casinoName) {
     showNotification('Please fill all fields', 'error');
     return;
   }
 
-  if (password.length < 6) {
+  if (data.password.length < 6) {
     showNotification('Password must be at least 6 characters', 'error');
     return;
   }
 
-  const data = {
-    name,
-    email,
-    phone,
-    password,
-    casinoName,
-    casinoId: generateCasinoId()
-  };
-
   try {
-    const r = await apiFetch('/auth/signup', {
+    const response = await apiFetch('/auth/signup', {
       method: 'POST',
       body: data
     });
 
-    if (r.success) {
-      setSession(r.token, r.user);
-      updateUIForLoggedInUser(r.user);
-      authModal.close();
+    console.log('Signup response:', response);
 
-      showNotification(
-        `Welcome to Royal Vegas, ${r.user.casinoName}!`,
-        'success'
-      );
-
+    if (!response.success) {
+      showNotification(response.message || 'Registration failed', 'error');
       return;
     }
 
-    showNotification(
-      r.message || 'Registration failed',
-      'error'
-    );
+    setSession(response.token, response.user);
+    updateUIForLoggedInUser(response.user);
+    authModal.close();
 
+    showNotification(
+      `Welcome to Royal Vegas, ${response.user.casinoName}!`,
+      'success'
+    );
   } catch (error) {
     console.error('Signup error:', error);
     showNotification('Unable to connect to server', 'error');
   }
 });
 
-document.getElementById('login-form')?.addEventListener('submit', async (e) => {
-  e.preventDefault();
+document.getElementById('login-form')?.addEventListener('submit', async event => {
+  event.preventDefault();
 
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value;
@@ -100,7 +90,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
   }
 
   try {
-    const r = await apiFetch('/auth/login', {
+    const response = await apiFetch('/auth/login', {
       method: 'POST',
       body: {
         email,
@@ -108,20 +98,16 @@ document.getElementById('login-form')?.addEventListener('submit', async (e) => {
       }
     });
 
-    if (r.success) {
-      setSession(r.token, r.user);
-      updateUIForLoggedInUser(r.user);
-      authModal.close();
-
-      showNotification('Welcome back!', 'success');
+    if (!response.success) {
+      showNotification(response.message || 'Login failed', 'error');
       return;
     }
 
-    showNotification(
-      r.message || 'Login failed',
-      'error'
-    );
+    setSession(response.token, response.user);
+    updateUIForLoggedInUser(response.user);
+    authModal.close();
 
+    showNotification('Welcome back!', 'success');
   } catch (error) {
     console.error('Login error:', error);
     showNotification('Unable to connect to server', 'error');
@@ -149,16 +135,13 @@ function logout() {
 
   document.getElementById('guest-view').classList.remove('hidden');
   document.getElementById('user-view').classList.add('hidden');
-
   document.getElementById('profile-menu')?.classList.remove('active');
 
   showNotification('Logged out', 'info');
 }
 
 function toggleProfile() {
-  document
-    .getElementById('profile-menu')
-    .classList.toggle('active');
+  document.getElementById('profile-menu')?.classList.toggle('active');
 }
 
 async function checkAuth() {
