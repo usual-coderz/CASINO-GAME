@@ -18,15 +18,17 @@ const toastClose = document.getElementById('toast-close');
 let toastTimer;
 
 function showToast(title, message, type = 'success') {
-  toastTitle.textContent = title;
-  toastMessage.textContent = message;
+  if (!toast) return;
 
-  toast.classList.remove('error');
-
-  if (type === 'error') {
-    toast.classList.add('error');
+  if (toastTitle) {
+    toastTitle.textContent = title;
   }
 
+  if (toastMessage) {
+    toastMessage.textContent = message;
+  }
+
+  toast.classList.toggle('error', type === 'error');
   toast.classList.add('show');
 
   clearTimeout(toastTimer);
@@ -37,36 +39,49 @@ function showToast(title, message, type = 'success') {
 }
 
 toastClose?.addEventListener('click', () => {
-  toast.classList.remove('show');
+  toast?.classList.remove('show');
+  clearTimeout(toastTimer);
 });
 
-
 function clearErrors() {
-  loginValueError.textContent = '';
-  passwordError.textContent = '';
-}
+  if (loginValueError) {
+    loginValueError.textContent = '';
+  }
 
+  if (passwordError) {
+    passwordError.textContent = '';
+  }
+}
 
 function validateLogin() {
   clearErrors();
 
   let valid = true;
 
-  if (!loginValue.value.trim()) {
-    loginValueError.textContent = 'Enter your email or Player ID.';
+  if (!loginValue?.value.trim()) {
+    if (loginValueError) {
+      loginValueError.textContent =
+        'Enter your email or Player ID.';
+    }
+
     valid = false;
   }
 
-  if (!password.value) {
-    passwordError.textContent = 'Enter your password.';
+  if (!password?.value) {
+    if (passwordError) {
+      passwordError.textContent =
+        'Enter your password.';
+    }
+
     valid = false;
   }
 
   return valid;
 }
 
-
 passwordToggle?.addEventListener('click', () => {
+  if (!password) return;
+
   const hidden = password.type === 'password';
 
   password.type = hidden ? 'text' : 'password';
@@ -81,8 +96,9 @@ passwordToggle?.addEventListener('click', () => {
   );
 });
 
+forgotPassword?.addEventListener('click', event => {
+  event.preventDefault();
 
-forgotPassword?.addEventListener('click', () => {
   showToast(
     'Password recovery',
     'Password recovery will be available soon.',
@@ -90,11 +106,14 @@ forgotPassword?.addEventListener('click', () => {
   );
 });
 
-
 loginForm?.addEventListener('submit', async event => {
   event.preventDefault();
 
   if (!validateLogin()) {
+    return;
+  }
+
+  if (!loginSubmit) {
     return;
   }
 
@@ -110,11 +129,22 @@ loginForm?.addEventListener('submit', async event => {
       }
     });
 
-    if (!response.success) {
-      throw new Error(response.message || 'Login failed');
+    if (!response?.success) {
+      throw new Error(
+        response?.message || 'Login failed'
+      );
     }
 
-    setSession(response.token, response.user);
+    if (!response.token || !response.user) {
+      throw new Error(
+        'Invalid login response from server.'
+      );
+    }
+
+    setSession(
+      response.token,
+      response.user
+    );
 
     showToast(
       'Welcome back',
@@ -122,13 +152,13 @@ loginForm?.addEventListener('submit', async event => {
     );
 
     setTimeout(() => {
-      window.location.href = '/games.html';
+      window.location.replace('/games.html');
     }, 700);
 
   } catch (error) {
     showToast(
       'Login failed',
-      error.message || 'Unable to sign in.',
+      error?.message || 'Unable to sign in.',
       'error'
     );
 
