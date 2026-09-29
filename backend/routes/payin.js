@@ -56,7 +56,7 @@ router.post('/create', auth, async (req, res) => {
   }
 });
 
-// ---- Webhook: YAHI balance credit hota hai ----
+// ---- Webhook: balance credit happens here ----
 router.post('/webhook', async (req, res) => {
   try {
     // signature check
@@ -77,7 +77,7 @@ router.post('/webhook', async (req, res) => {
     console.log('Payin webhook:', { merchantOrderNo, orderNo, status });
 
     const tx = await Transaction.findOne({ orderId: merchantOrderNo });
-    if (!tx) return res.json({ success: true });          // unknown → ack
+    if (!tx) return res.json({ success: true });           // unknown → ack
     if (tx.status === 'SUCCESS') return res.json({ success: true }); // idempotent
 
     const st = String(status || '').toUpperCase();
