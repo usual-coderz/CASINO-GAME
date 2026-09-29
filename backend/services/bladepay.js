@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 const BASE_URL = (process.env.BASE_URL || 'https://casinogame-c34130ca80b6.herokuapp.com').replace(/\/+$/, '');
-const AUTH = () => ({
+
+const authHeaders = () => ({
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${process.env.BLADEPAY_KEY}`
 });
@@ -23,7 +24,7 @@ async function createPayin({ merchantOrderNo, amount, user }) {
       notifyUrl: `${BASE_URL}/api/payin/webhook`,
       returnUrl: `${BASE_URL}/payment-success?order=${merchantOrderNo}`
     },
-    { headers: AUTH(), timeout: 20000 }
+    { headers: authHeaders(), timeout: 20000 }
   );
   return data;
 }
@@ -40,7 +41,7 @@ async function createPayout({ merchantOrderNo, amount, upiId, name, phone }) {
       cashPhone: phone,
       notifyUrl: `${BASE_URL}/api/payout/webhook`
     },
-    { headers: AUTH(), timeout: 20000 }
+    { headers: authHeaders(), timeout: 20000 }
   );
   return data;
 }
