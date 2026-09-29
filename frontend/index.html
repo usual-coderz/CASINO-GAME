@@ -26,11 +26,11 @@
 <body class="home-page">
 
   <header class="topbar">
-
     <div class="topbar-inner">
 
       <a href="/" class="brand">
         <span class="brand-mark">K</span>
+
         <span class="brand-text">
           <strong>KHELZA</strong>
           <small>GAMES</small>
@@ -39,19 +39,27 @@
 
       <div class="top-actions">
 
-        <button class="icon-btn notification-btn" type="button" id="notification-btn">
+        <button
+          class="icon-btn notification-btn"
+          type="button"
+          id="notification-btn"
+          aria-label="Notifications"
+        >
           <i class="fa-regular fa-bell"></i>
           <span class="notification-dot"></span>
         </button>
 
-        <a href="/login.html" class="profile-btn">
+        <a
+          href="/profile.html"
+          class="profile-btn"
+          aria-label="Profile"
+        >
           <i class="fa-regular fa-user"></i>
         </a>
 
       </div>
 
     </div>
-
   </header>
 
 
@@ -65,10 +73,16 @@
 
       <div class="notice-content">
         <strong>Welcome to Khelza</strong>
-        <span>Play responsibly and keep your account information secure.</span>
+        <span>
+          Play responsibly and keep your account information secure.
+        </span>
       </div>
 
-      <button type="button" class="notice-action" id="notice-detail">
+      <button
+        type="button"
+        class="notice-action"
+        id="notice-detail"
+      >
         Detail
       </button>
 
@@ -93,7 +107,10 @@
           Discover a new collection of games.
         </p>
 
-        <a href="/games.html" class="hero-btn">
+        <a
+          href="/games.html"
+          class="hero-btn"
+        >
           Explore games
           <i class="fa-solid fa-arrow-right"></i>
         </a>
@@ -121,7 +138,10 @@
 
     <section class="quick-actions">
 
-      <a href="/games.html" class="quick-card quick-card-primary">
+      <a
+        href="/games.html"
+        class="quick-card quick-card-primary"
+      >
         <span class="quick-icon">
           <i class="fa-solid fa-bolt"></i>
         </span>
@@ -134,7 +154,11 @@
         <i class="fa-solid fa-chevron-right"></i>
       </a>
 
-      <a href="/scheme.html" class="quick-card">
+
+      <a
+        href="/scheme.html"
+        class="quick-card"
+      >
         <span class="quick-icon">
           <i class="fa-solid fa-gift"></i>
         </span>
@@ -152,19 +176,28 @@
 
     <section class="promo-row">
 
-      <a href="/scheme.html" class="mini-promo mini-promo-one">
+      <a
+        href="/scheme.html"
+        class="mini-promo mini-promo-one"
+      >
         <div>
           <span>FEATURED</span>
           <strong>New games</strong>
         </div>
+
         <i class="fa-solid fa-gamepad"></i>
       </a>
 
-      <a href="/scheme.html" class="mini-promo mini-promo-two">
+
+      <a
+        href="/scheme.html"
+        class="mini-promo mini-promo-two"
+      >
         <div>
           <span>EXPLORE</span>
           <strong>Latest offers</strong>
         </div>
+
         <i class="fa-solid fa-gift"></i>
       </a>
 
@@ -175,22 +208,41 @@
 
       <div class="section-tabs">
 
-        <button class="category-tab active" data-category="all">
+        <button
+          class="category-tab active"
+          type="button"
+          data-category="all"
+        >
           <i class="fa-solid fa-border-all"></i>
           <span>Lobby</span>
         </button>
 
-        <button class="category-tab" data-category="lottery">
+
+        <button
+          class="category-tab"
+          type="button"
+          data-category="lottery"
+        >
           <i class="fa-solid fa-ticket"></i>
           <span>Lottery</span>
         </button>
 
-        <button class="category-tab" data-category="popular">
+
+        <button
+          class="category-tab"
+          type="button"
+          data-category="popular"
+        >
           <i class="fa-solid fa-fire"></i>
           <span>Popular</span>
         </button>
 
-        <button class="category-tab" data-category="mini">
+
+        <button
+          class="category-tab"
+          type="button"
+          data-category="mini"
+        >
           <i class="fa-solid fa-puzzle-piece"></i>
           <span>Mini Games</span>
         </button>
@@ -219,7 +271,11 @@
 
       <div class="game-grid">
 
-        <article class="game-card" data-category="lottery">
+
+        <article
+          class="game-card"
+          data-category="lottery"
+        >
 
           <div class="game-image game-blue">
 
@@ -232,25 +288,36 @@
               <strong>7</strong>
             </div>
 
-            <span class="game-label">KHELZA</span>
+            <span class="game-label">
+              KHELZA
+            </span>
 
           </div>
 
+
           <div class="game-info">
+
             <div>
               <strong>Win Go</strong>
               <small>Lottery</small>
             </div>
 
-            <a href="/games.html" class="play-btn">
+            <a
+              href="/games.html"
+              class="play-btn"
+            >
               Play
             </a>
+
           </div>
 
         </article>
 
 
-        <article class="game-card" data-category="popular">
+        <article
+          class="game-card"
+          data-category="popular"
+        >
 
           <div class="game-image game-red">
 
@@ -269,21 +336,30 @@
 
           </div>
 
+
           <div class="game-info">
+
             <div>
               <strong>Dice</strong>
-              <small>Popular</small>
+              <small>Demo Game</small>
             </div>
 
-            <a href="/games/dice.html" class="play-btn">
+            <a
+              href="/games/dice/dice.html"
+              class="play-btn"
+            >
               Play
             </a>
+
           </div>
 
         </article>
 
 
-        <article class="game-card" data-category="lottery">
+        <article
+          class="game-card"
+          data-category="lottery"
+        >
 
           <div class="game-image game-green">
 
@@ -291,50 +367,76 @@
               <strong>5D</strong>
             </div>
 
-            <span class="small-ball">5</span>
-            <span class="small-ball small-ball-two">9</span>
+            <span class="small-ball">
+              5
+            </span>
+
+            <span class="small-ball small-ball-two">
+              9
+            </span>
 
             <i class="fa-solid fa-circle-dollar-to-slot slot-icon"></i>
 
           </div>
 
+
           <div class="game-info">
+
             <div>
               <strong>5D Lottery</strong>
               <small>Lottery</small>
             </div>
 
-            <button class="play-btn coming-btn" type="button">
+            <button
+              class="play-btn coming-btn"
+              type="button"
+            >
               Soon
             </button>
+
           </div>
 
         </article>
 
 
-        <article class="game-card" data-category="mini">
+        <article
+          class="game-card"
+          data-category="mini"
+        >
 
           <div class="game-image game-purple">
 
             <i class="fa-solid fa-puzzle-piece"></i>
 
-            <span class="floating-star star-one">✦</span>
-            <span class="floating-star star-two">✦</span>
+            <span class="floating-star star-one">
+              ✦
+            </span>
+
+            <span class="floating-star star-two">
+              ✦
+            </span>
 
           </div>
 
+
           <div class="game-info">
+
             <div>
               <strong>Mini Games</strong>
               <small>Coming soon</small>
             </div>
 
-            <button class="play-btn coming-btn" type="button">
+            <button
+              class="play-btn coming-btn"
+              type="button"
+            >
               Soon
             </button>
+
           </div>
 
         </article>
+
 
       </div>
 
@@ -347,7 +449,10 @@
 
       <div>
         <strong>Khelza Games</strong>
-        <span>New games and features will be added regularly.</span>
+
+        <span>
+          New games and features will be added regularly.
+        </span>
       </div>
 
     </section>
@@ -357,27 +462,47 @@
 
   <nav class="bottom-nav">
 
-    <a href="#" class="bottom-item">
+    <a
+      href="#"
+      class="bottom-item"
+      id="affiliate-nav"
+    >
       <i class="fa-solid fa-users"></i>
       <span>Affiliate</span>
     </a>
 
-    <a href="/wallet.html" class="bottom-item">
+
+    <a
+      href="/wallet.html"
+      class="bottom-item"
+    >
       <i class="fa-solid fa-wallet"></i>
       <span>Wallet</span>
     </a>
 
-    <a href="/games.html" class="bottom-item active">
+
+    <a
+      href="/games.html"
+      class="bottom-item active"
+    >
       <i class="fa-solid fa-gamepad"></i>
       <span>Games</span>
     </a>
 
-    <a href="#" class="bottom-item">
+
+    <a
+      href="/activity.html"
+      class="bottom-item"
+    >
       <i class="fa-solid fa-chart-column"></i>
       <span>Activity</span>
     </a>
 
-    <a href="/login.html" class="bottom-item">
+
+    <a
+      href="/profile.html"
+      class="bottom-item"
+    >
       <i class="fa-solid fa-user"></i>
       <span>Profile</span>
     </a>
@@ -385,18 +510,30 @@
   </nav>
 
 
-  <div class="toast" id="home-toast">
+  <div
+    class="toast"
+    id="home-toast"
+  >
 
     <div class="toast-icon">
       <i class="fa-solid fa-circle-info"></i>
     </div>
 
     <div>
-      <strong id="toast-title">Khelza</strong>
-      <span id="toast-message">Coming soon.</span>
+      <strong id="toast-title">
+        Khelza
+      </strong>
+
+      <span id="toast-message">
+        Coming soon.
+      </span>
     </div>
 
-    <button type="button" id="toast-close">
+    <button
+      type="button"
+      id="toast-close"
+      aria-label="Close notification"
+    >
       <i class="fa-solid fa-xmark"></i>
     </button>
 
